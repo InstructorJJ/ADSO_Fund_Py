@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/vnd.microsoft.icon" id="favicon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fundamentos de Programación con Python</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+    <div class="learning-path">
+        <h4 style="margin-bottom: 15px; color: #333;">Ruta de Aprendizaje</h4>
+        <div class="path-steps" id="pathSteps"></div>
+    </div>
+
+    <div class="container">
+        <div class="header">
+            <h1>🐍 Fundamentos de Programación</h1>
+            <p>Análisis y Desarrollo de Software con Python</p>
+            <p style="font-size: 1rem; opacity: 0.8;">De principiante a desarrollador en 8 módulos progresivos</p>
+        </div>
+
+        <div class="course-stats">
+            <div class="stat-card">
+                <h3 id="completedModules">1</h3>
+                <p>Módulos Completados</p>
+            </div>
+            <div class="stat-card">
+                <h3>8</h3>
+                <p>Módulos Totales</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="totalExercises">45</h3>
+                <p>Ejercicios Prácticos</p>
+            </div>
+            <div class="stat-card">
+                <h3 id="estimatedHours">32</h3>
+                <p>Horas Estimadas</p>
+            </div>
+        </div>
+
+        <div class="progress-overview">
+            <h2>Progreso del Curso</h2>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressFill" style="width: 12.5%"></div>
+            </div>
+            <p>Progreso: <span id="progressText">12.5%</span> | Próximo módulo: <strong>Variables y Tipos de Datos</strong></p>
+        </div>
+
+        <div class="modules-grid" id="modulesGrid">
+            <!-- Los módulos se generarán dinámicamente -->
+        </div>
+
+        <div class="action-buttons">
+            <button class="btn btn-primary" onclick="continueCurrentModule()">Continuar Aprendiendo</button>
+            <button class="btn btn-secondary" onclick="resetProgress()">Reiniciar Curso</button>
+        </div>
+
+        <div class="footer">
+            <h3>🚀 ¡Comienza tu Viaje en la Programación!</h3>
+            <p>Aprende los fundamentos de la programación con Python a través de ejemplos prácticos y ejercicios interactivos.</p>
+            <p style="margin-top: 15px; opacity: 0.8;">Cada módulo incluye teoría, práctica y proyectos reales.</p>
+        </div>
+    </div>
+
+    <script>
+        // Datos de los módulos
+        const modules = [
+            {
+                title: "Configuración y Primeros Pasos",
+                description: "Instalación de Python, configuración del entorno de desarrollo y tu primer programa 'Hola Mundo'.",
+                duration: "2 horas",
+                exercises: 3,
+                status: "completed",
+                topics: ["Instalación de Python", "IDE y editores", "Primer programa", "Conceptos básicos"]
+            },
+            {
+                title: "Variables y Tipos de Datos",
+                description: "Aprende sobre variables, números, cadenas, booleanos y cómo Python maneja los diferentes tipos de datos.",
+                duration: "3 horas",
+                exercises: 6,
+                status: "current",
+                topics: ["Variables", "Números", "Cadenas", "Booleanos", "Conversiones"]
+            },
+            {
+                title: "Operadores y Expresiones",
+                description: "Domina los operadores aritméticos, de comparación, lógicos y cómo construir expresiones complejas.",
+                duration: "3 horas",
+                exercises: 5,
+                status: "available",
+                topics: ["Operadores aritméticos", "Comparación", "Operadores lógicos", "Precedencia"]
+            },
+            {
+                title: "Estructuras de Control",
+                description: "Controla el flujo de tu programa con if, elif, else, bucles for y while para crear lógica compleja.",
+                duration: "4 horas",
+                exercises: 8,
+                status: "locked",
+                topics: ["Condicionales if/else", "Bucles for", "Bucles while", "Control de flujo"]
+            },
+            {
+                title: "Funciones y Procedimientos",
+                description: "Crea código reutilizable con funciones, parámetros, valores de retorno y mejores prácticas.",
+                duration: "4 horas",
+                exercises: 7,
+                status: "locked",
+                topics: ["Definir funciones", "Parámetros", "Return", "Scope", "Recursión"]
+            },
+            {
+                title: "Estructuras de Datos",
+                description: "Trabaja con listas, tuplas, diccionarios y conjuntos para organizar y manipular información.",
+                duration: "5 horas",
+                exercises: 10,
+                status: "locked",
+                topics: ["Listas", "Tuplas", "Diccionarios", "Conjuntos", "Comprensiones"]
+            },
+            {
+                title: "Manejo de Archivos y Datos",
+                description: "Lee y escribe archivos, procesa datos CSV, JSON y aprende técnicas de visualización básica.",
+                duration: "4 horas",
+                exercises: 6,
+                status: "locked",
+                topics: ["Archivos de texto", "CSV/JSON", "Manejo de errores", "Visualización"]
+            },
+            {
+                title: "Proyecto Final Integrador",
+                description: "Desarrolla una aplicación completa que integre todos los conceptos aprendidos en el curso.",
+                duration: "7 horas",
+                exercises: 1,
+                status: "locked",
+                topics: ["Análisis de requisitos", "Diseño", "Implementación", "Testing", "Documentación"]
+            }
+        ];
+
+        // Estado del progreso del estudiante
+        let studentProgress = {
+            currentModule: 1,
+            completedModules: [0],
+            totalProgress: 12.5
+        };
+
+        function getStatusClass(status) {
+            switch(status) {
+                case 'completed': return 'status-completed';
+                case 'current': return 'status-current';
+                case 'available': return 'status-available';
+                default: return 'status-locked';
+            }
+        }
+
+        function getStatusText(status) {
+            switch(status) {
+                case 'completed': return '✓ Completado';
+                case 'current': return '📚 En Progreso';
+                case 'available': return '🔓 Disponible';
+                default: return '🔒 Bloqueado';
+            }
+        }
+
+        function renderModules() {
+            const grid = document.getElementById('modulesGrid');
+            grid.innerHTML = '';
+
+            modules.forEach((module, index) => {
+                const moduleCard = document.createElement('div');
+                moduleCard.className = `module-card ${module.status}`;
+                
+                moduleCard.innerHTML = `
+                    <div class="module-header">
+                        <div class="module-number">${index + 1}</div>
+                        <div>
+                            <div class="module-title">${module.title}</div>
+                            <div class="module-status ${getStatusClass(module.status)}">
+                                ${getStatusText(module.status)}
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="module-description">${module.description}</div>
+                    
+                    <div class="module-details">
+                        <div class="module-duration">⏱️ ${module.duration}</div>
+                        <div class="module-exercises">📝 ${module.exercises} ejercicios</div>
+                    </div>
+                    
+                    <div style="margin-top: 15px;">
+                        <strong>Temas principales:</strong>
+                        <div style="margin-top: 5px; font-size: 0.9rem; color: #666;">
+                            ${module.topics.join(' • ')}
+                        </div>
+                    </div>
+                `;
+
+                moduleCard.addEventListener('click', () => openModule(index));
+                grid.appendChild(moduleCard);
+            });
+        }
+
+        function renderLearningPath() {
+            const pathSteps = document.getElementById('pathSteps');
+            pathSteps.innerHTML = '';
+
+            modules.forEach((module, index) => {
+                const step = document.createElement('div');
+                step.className = `path-step ${module.status}`;
+                
+                step.innerHTML = `
+                    <div class="step-dot ${module.status}"></div>
+                    <span style="font-size: 0.85rem; color: #333;">${index + 1}. ${module.title.substring(0, 20)}...</span>
+                `;
+                
+                pathSteps.appendChild(step);
+            });
+        }
+
+        function openModule(moduleIndex) {
+            const module = modules[moduleIndex];
+            
+            if (module.status === 'locked') {
+                alert('Este módulo está bloqueado. Completa los módulos anteriores para desbloquearlo.');
+                return;
+            }
+
+            // Simulación de navegación al módulo
+            alert(`Abriendo: ${module.title}\n\n${module.description}\n\nDuración: ${module.duration}\nEjercicios: ${module.exercises}`);
+        }
+
+        function continueCurrentModule() {
+            const currentModule = modules.find(m => m.status === 'current');
+            if (currentModule) {
+                const index = modules.indexOf(currentModule);
+                openModule(index);
+            } else {
+                alert('¡Felicidades! Has completado todos los módulos disponibles.');
+            }
+        }
+
+        function resetProgress() {
+            if (confirm('¿Estás seguro de que quieres reiniciar tu progreso? Esta acción no se puede deshacer.')) {
+                // Resetear progreso
+                modules.forEach((module, index) => {
+                    if (index === 0) {
+                        module.status = 'current';
+                    } else {
+                        module.status = 'locked';
+                    }
+                });
+
+                studentProgress = {
+                    currentModule: 0,
+                    completedModules: [],
+                    totalProgress: 0
+                };
+
+                updateUI();
+                alert('Progreso reiniciado. ¡Empezemos desde el principio!');
+            }
+        }
+
+        function simulateProgress() {
+            // Simula el progreso del estudiante para la demostración
+            setInterval(() => {
+                // Este sería reemplazado por datos reales del backend
+                const progressFill = document.getElementById('progressFill');
+                const currentWidth = parseInt(progressFill.style.width);
+                
+                if (currentWidth < 100 && Math.random() > 0.98) {
+                    const newWidth = Math.min(currentWidth + 12.5, 100);
+                    progressFill.style.width = newWidth + '%';
+                    document.getElementById('progressText').textContent = newWidth + '%';
+                    
+                    if (newWidth > currentWidth) {
+                        // Desbloquear siguiente módulo
+                        const nextModuleIndex = Math.floor(newWidth / 12.5);
+                        if (nextModuleIndex < modules.length) {
+                            modules[nextModuleIndex - 1].status = 'completed';
+                            if (nextModuleIndex < modules.length) {
+                                modules[nextModuleIndex].status = 'current';
+                            }
+                            renderModules();
+                            renderLearningPath();
+                        }
+                    }
+                }
+            }, 5000);
+        }
+
+        function updateUI() {
+            document.getElementById('completedModules').textContent = studentProgress.completedModules.length;
+            document.getElementById('progressFill').style.width = studentProgress.totalProgress + '%';
+            document.getElementById('progressText').textContent = studentProgress.totalProgress + '%';
+            
+            renderModules();
+            renderLearningPath();
+        }
+
+        // Inicialización
+        document.addEventListener('DOMContentLoaded', () => {
+            updateUI();
+            simulateProgress();
+        });
+    </script>
+</body>
+</html>
