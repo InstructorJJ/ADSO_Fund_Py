@@ -315,3 +315,14 @@ body {
     .course-stats { gap: 15px; }
     .learning-path { display: none; }
 }
+.python-logo {
+    width: 100px;
+    height: 100px;
+    background: linear-gradient(135deg, #414dd2 50%, #4149d0 50%);
+    border-radius: 7%;
+    display: contents;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(255, 255, 255, 0.4);
+}
