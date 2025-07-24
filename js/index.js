@@ -157,6 +157,8 @@ function openModule(moduleIndex) {
 
     // Simulación de navegación al módulo
     alert(`Abriendo: ${module.title}\n\n${module.description}\n\nDuración: ${module.duration}\nEjercicios: ${module.exercises}`);
+    let mod = moduleIndex + 1;
+    window.location.href = 'Mod_'+mod+'.html';
 }
 
 function continueCurrentModule() {

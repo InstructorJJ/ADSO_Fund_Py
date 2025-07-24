@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/vnd.microsoft.icon" id="favicon">    
+    <title>Bienvenidos - Fundamentos de Programación con Python</title>
+    <link rel="stylesheet" href="css/bien.css">
+</head>
+<body>
+    <div class="floating-elements">
+        <div class="floating-element">🐍</div>
+        <div class="floating-element">📊</div>
+        <div class="floating-element">💻</div>
+        <div class="floating-element">🚀</div>
+    </div>
+
+    <div class="container">
+        <header class="welcome-header">
+            <div class="python-logo">🐍</div>
+            <h1>¡Bienvenido al Futuro!</h1>
+            <p class="subtitle">Fundamentos de Programación con Python</p>
+            <div class="progress-bar">
+                <div class="progress-fill"></div>
+            </div>
+        </header>
+
+        <section class="motivation-section">
+            <div class="motivation-card" onclick="animateCard(this)">
+                <span class="card-icon">🚀</span>
+                <h3 class="card-title">Transforma tu Carrera</h3>
+                <p class="card-description">Python es el lenguaje más demandado en Desarrollo de Software. Domínalo y abre puertas a oportunidades increíbles.</p>
+            </div>
+
+            <div class="motivation-card" onclick="animateCard(this)">
+                <span class="card-icon">💡</span>
+                <h3 class="card-title">Aprende Haciendo</h3>
+                <p class="card-description">Cada módulo incluye proyectos reales que te prepararán para desafíos del mundo laboral.</p>
+            </div>
+
+            <div class="motivation-card" onclick="animateCard(this)">
+                <span class="card-icon">🎯</span>
+                <h3 class="card-title">Resultados Garantizados</h3>
+                <p class="card-description">Al finalizar, tendrás las habilidades para analizar datos y crear visualizaciones impactantes.</p>
+            </div>
+        </section>
+
+        <section class="stats-section">
+            <div class="stat-item">
+                <span class="stat-number" id="projects">0</span>
+                <span class="stat-label">Ejercicios Prácticos</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="hours">0</span>
+                <span class="stat-label">Horas de Contenido</span>
+            </div>
+            <div class="stat-item">
+                <span class="stat-number" id="skills">0</span>
+                <span class="stat-label">Habilidades Nuevas</span>
+            </div>
+        </section>
+
+        <section class="modules-preview">
+            <h2 class="modules-title">Tu Viaje de Aprendizaje</h2>
+            <p style="font-size: 1.2rem; margin-bottom: 20px;">Cada módulo te acerca más a convertirte en un experto en desarrollo de software</p>
+            
+            <div class="modules-grid">
+                <div class="module-item" onclick="highlightModule(this)">
+                    <div class="module-number">Módulo 1</div>
+                    <div class="module-title">Configuración y Primeros Pasos</div>
+                    <p>Instalación de Python • IDE y editores • Primer programa • Conceptos básicos</p>
+                </div>
+                
+                <div class="module-item" onclick="highlightModule(this)">
+                    <div class="module-number">Módulo 2</div>
+                    <div class="module-title">EVariables y Tipos de Datos</div>
+                    <p>Variables • Números • Cadenas • Booleanos • Conversiones</p>
+                </div>
+                
+                <div class="module-item" onclick="highlightModule(this)">
+                    <div class="module-number">Módulo 3</div>
+                    <div class="module-title">Operadores y Expresiones</div>
+                    <p>POperadores aritméticos • Comparación • Operadores lógicos • Precedencia</p>
+                </div>
+                
+                <div class="module-item" onclick="highlightModule(this)">
+                    <div class="module-number">Módulo 4</div>
+                    <div class="module-title">Estructuras de Control</div>
+                    <p>Condicionales if/else • Bucles for • Bucles while • Control de flujo</p>
+                </div>
+                
+                <div class="module-item" onclick="highlightModule(this)">
+                    <div class="module-number">Módulo 5</div>
+                    <div class="module-title">Funciones y Procedimientos</div>
+                    <p>Definir funciones • Parámetros • Return • Scope • Recursión</p>
+                </div>
+                
+                <div class="module-item" onclick="highlightModule(this)">
+                    <div class="module-number">Módulo 6</div>
+                    <div class="module-title">Estructuras de Datos</div>
+                    <p>Listas • Tuplas • Diccionarios • Conjuntos • Comprensiones</p>
+                </div>
+
+                <div class="module-item" onclick="highlightModule(this)">
+                    <div class="module-number">Módulo 7</div>
+                    <div class="module-title">Manejo de Archivos y Datos</div>
+                    <p>Archivos de texto • CSV/JSON • Manejo de errores • Visualización</p>
+                </div>
+
+                <div class="module-item" onclick="highlightModule(this)">
+                    <div class="module-number">Módulo 8</div>
+                    <div class="module-title">Proyecto Final Integrador</div>
+                    <p>Análisis de requisitos • Diseño • Implementación • Testing • Documentación</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta-section">
+            <h2 style="font-size: 2.5rem; margin-bottom: 30px; color: #FFD700;">¿Estás Listo para el Desafío?</h2>
+            <p style="font-size: 1.3rem; margin-bottom: 40px;">Tu futuro en Desarrollo de Software comienza ahora. Cada línea de código que escribas te acercará a tus metas profesionales.</p>
+            
+            <button class="cta-button" onclick="startJourney()">
+                🚀 ¡Comenzar Mi Viaje!
+            </button>
+            
+            <button class="cta-button" onclick="showMotivation()" style="background: rgba(255,255,255,0.2); color: white;">
+                💪 Necesito Motivación Extra
+            </button>
+        </section>
+    </div>L
+
+    <script>
+        // Animación de contadores
+        function animateCounter(element, target, duration = 2000) {
+            const start = 0;
+            const increment = target / (duration / 16);
+            let current = start;
+            
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                element.textContent = Math.floor(current);
+            }, 16);
+        }
+
+        // Inicializar contadores
+        setTimeout(() => {
+            animateCounter(document.getElementById('projects'), 16);
+            animateCounter(document.getElementById('hours'), 40);
+            animateCounter(document.getElementById('skills'), 25);
+        }, 1000);
+
+        // Animación de tarjetas
+        function animateCard(card) {
+            card.style.transform = 'scale(1.05) rotateY(10deg)';
+            card.style.background = 'rgba(255, 215, 0, 0.2)';
+            
+            setTimeout(() => {
+                card.style.transform = '';
+                card.style.background = 'rgba(255, 255, 255, 0.1)';
+            }, 300);
+        }
+
+        // Destacar módulos
+        function highlightModule(module) {
+            // Remover highlight de otros módulos
+            document.querySelectorAll('.module-item').forEach(item => {
+                item.style.background = 'rgba(255, 255, 255, 0.1)';
+                item.style.borderLeft = '4px solid #FFD700';
+            });
+            
+            // Destacar el módulo seleccionado
+            module.style.background = 'rgba(255, 215, 0, 0.3)';
+            module.style.borderLeft = '4px solid #FFA500';
+            
+            // Crear efecto de ondas
+            const ripple = document.createElement('div');
+            ripple.style.position = 'absolute';
+            ripple.style.width = '100px';
+            ripple.style.height = '100px';
+            ripple.style.background = 'rgba(255, 215, 0, 0.3)';
+            ripple.style.borderRadius = '50%';
+            ripple.style.transform = 'scale(0)';
+            ripple.style.animation = 'ripple 0.6s linear';
+            
+            module.style.position = 'relative';
+            module.style.overflow = 'hidden';
+            module.appendChild(ripple);
+            
+            setTimeout(() => {
+                ripple.remove();
+            }, 600);
+        }
+
+        // Función para comenzar el viaje
+        function startJourney() {
+            const button = event.target;
+            button.style.transform = 'scale(1.1)';
+            button.innerHTML = '✨ ¡Iniciando tu Aventura!';
+            
+            // Crear confetti
+            createConfetti();
+            
+        setTimeout(() => {
+            button.style.transform = '';
+            button.innerHTML = '🎯 ¡Directo al Módulo 1!';
+            
+            // Nuevo setTimeout para la redirección
+            setTimeout(() => {
+                window.location.href = 'Mod_1.html';
+            }, 500); // 500 ms después de cambiar el botón (0.5 segundos extra)
+        }, 3000);
+        }
+
+        // Mostrar motivación extra
+        function showMotivation() {
+            const motivationalQuotes = [
+                "💪 'El éxito es la suma de pequeños esfuerzos repetidos día tras día.'",
+                "🌟 'Cada experto fue una vez un principiante.'",
+                "🚀 'El futuro pertenece a quienes se preparan para él hoy.'",
+                "🎯 'Tu única limitación es tu mentalidad.'",
+                "💡 'Aprende como si fueras a vivir para siempre.'"
+            ];
+            
+            const randomQuote = motivationalQuotes[Math.floor(Math.random() * motivationalQuotes.length)];
+            
+            // Crear modal de motivación
+            const modal = document.createElement('div');
+            modal.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: rgba(0,0,0,0.8);
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                z-index: 1000;
+                animation: fadeIn 0.5s ease;
+            `;
+            
+            modal.innerHTML = `
+                <div style="
+                    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+                    padding: 40px;
+                    border-radius: 20px;
+                    text-align: center;
+                    max-width: 500px;
+                    color: white;
+                    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+                ">
+                    <h2 style="margin-bottom: 20px; color: #FFD700;">¡Tú Puedes Lograrlo!</h2>
+                    <p style="font-size: 1.3rem; margin-bottom: 30px;">${randomQuote}</p>
+                    <button onclick="this.parentElement.parentElement.remove()" style="
+                        background: linear-gradient(45deg, #FFD700, #FFA500);
+                        color: #333;
+                        padding: 15px 30px;
+                        border: none;
+                        border-radius: 25px;
+                        font-size: 1.1rem;
+                        font-weight: bold;
+                        cursor: pointer;
+                    ">¡Entendido! 💪</button>
+                </div>
+            `;
+            
+            document.body.appendChild(modal);
+        }
+
+        // Crear efecto confetti
+        function createConfetti() {
+            const colors = ['#FFD700', '#FFA500', '#FF6347', '#32CD32', '#1E90FF'];
+            
+            for (let i = 0; i < 50; i++) {
+                const confetti = document.createElement('div');
+                confetti.style.cssText = `
+                    position: fixed;
+                    width: 10px;
+                    height: 10px;
+                    background: ${colors[Math.floor(Math.random() * colors.length)]};
+                    left: ${Math.random() * 100}%;
+                    top: -10px;
+                    border-radius: 50%;
+                    pointer-events: none;
+                    z-index: 1000;
+                    animation: fall ${Math.random() * 3 + 2}s linear forwards;
+                `;
+                
+                document.body.appendChild(confetti);
+                
+                setTimeout(() => {
+                    confetti.remove();
+                }, 5000);
+            }
+        }
+
+        // Añadir estilos de animación
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            
+            @keyframes ripple {
+                from { transform: scale(0); opacity: 1; }
+                to { transform: scale(4); opacity: 0; }
+            }
+            
+            @keyframes fall {
+                from { transform: translateY(-100vh) rotate(0deg); }
+                to { transform: translateY(100vh) rotate(360deg); }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Añadir efectos de sonido simulados con vibración (en dispositivos móviles)
+        function playFeedback() {
+            if (navigator.vibrate) {
+                navigator.vibrate(50);
+            }
+        }
+
+        // Añadir feedback táctil a los botones
+        document.querySelectorAll('button, .motivation-card, .module-item').forEach(element => {
+            element.addEventListener('click', playFeedback);
+        });
+    </script>
+</body>
+</html>
