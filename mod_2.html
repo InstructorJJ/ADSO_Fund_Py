@@ -1,658 +1,247 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Módulo 2: Variables y Tipos de Datos en Python</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            color: #333;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 20px;
-        }
-        
-        .header {
-            text-align: center;
-            color: white;
-            margin-bottom: 30px;
-            animation: fadeInDown 1s ease-out;
-        }
-        
-        .header h1 {
-            font-size: 2.5em;
-            margin-bottom: 10px;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
-        }
-        
-        .header p {
-            font-size: 1.2em;
-            opacity: 0.9;
-        }
-        
-        .progress-bar {
-            background: rgba(255,255,255,0.2);
-            border-radius: 25px;
-            height: 10px;
-            margin: 20px 0;
-            overflow: hidden;
-        }
-        
-        .progress-fill {
-            background: linear-gradient(90deg, #4CAF50, #45a049);
-            height: 100%;
-            width: 0%;
-            border-radius: 25px;
-            transition: width 0.5s ease;
-        }
-        
-        .content-section {
-            background: white;
-            border-radius: 15px;
-            padding: 30px;
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-            transform: translateY(20px);
-            opacity: 0;
-            animation: slideUp 0.8s ease-out forwards;
-        }
-        
-        .content-section h2 {
-            color: #667eea;
-            font-size: 1.8em;
-            margin-bottom: 20px;
-            border-bottom: 3px solid #667eea;
-            padding-bottom: 10px;
-        }
-        
-        .concept-card {
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 15px 0;
-            border-left: 4px solid #667eea;
-            transition: transform 0.3s ease;
-        }
-        
-        .concept-card:hover {
-            transform: translateX(5px);
-        }
-        
-        .concept-card h3 {
-            color: #667eea;
-            margin-bottom: 10px;
-        }
-        
-        .code-container {
-            background: #2d3748;
-            border-radius: 10px;
-            padding: 20px;
-            margin: 15px 0;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .code-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #4CAF50, #2196F3, #FF9800);
-        }
-        
-        .code {
-            color: #e2e8f0;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            line-height: 1.6;
-            white-space: pre-wrap;
-        }
-        
-        .run-button {
-            background: linear-gradient(135deg, #4CAF50, #45a049);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .run-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.4);
-        }
-        
-        .output {
-            background: #1a202c;
-            color: #68d391;
-            padding: 15px;
-            border-radius: 5px;
-            margin-top: 10px;
-            font-family: 'Courier New', monospace;
-            border: 1px solid #4a5568;
-            min-height: 40px;
-        }
-        
-        .exercise {
-            background: linear-gradient(135deg, #fff3e0 0%, #ffe0b3 100%);
-            border-radius: 10px;
-            padding: 20px;
-            margin: 20px 0;
-            border-left: 4px solid #ff9800;
-        }
-        
-        .exercise h3 {
-            color: #e65100;
-            margin-bottom: 15px;
-        }
-        
-        .input-area {
-            width: 100%;
-            height: 120px;
-            padding: 15px;
-            border: 2px solid #ddd;
-            border-radius: 8px;
-            font-family: 'Courier New', monospace;
-            font-size: 14px;
-            resize: vertical;
-            background: #fafafa;
-        }
-        
-        .input-area:focus {
-            border-color: #667eea;
-            outline: none;
-            box-shadow: 0 0 10px rgba(102, 126, 234, 0.3);
-        }
-        
-        .check-button {
-            background: linear-gradient(135deg, #2196F3, #1976D2);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 14px;
-            margin-top: 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .check-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 5px 15px rgba(33, 150, 243, 0.4);
-        }
-        
-        .feedback {
-            padding: 15px;
-            border-radius: 8px;
-            margin-top: 15px;
-            font-weight: bold;
-        }
-        
-        .feedback.correct {
-            background: #e8f5e8;
-            color: #2e7d32;
-            border: 1px solid #4caf50;
-        }
-        
-        .feedback.incorrect {
-            background: #ffebee;
-            color: #c62828;
-            border: 1px solid #f44336;
-        }
-        
-        .tip {
-            background: linear-gradient(135deg, #e3f2fd 0%, #bbdefb 100%);
-            border-radius: 10px;
-            padding: 15px;
-            margin: 15px 0;
-            border-left: 4px solid #2196F3;
-        }
-        
-        .tip::before {
-            content: "💡 ";
-            font-size: 1.2em;
-        }
-        
-        .navigation {
-            text-align: center;
-            margin-top: 40px;
-        }
-        
-        .nav-button {
-            background: linear-gradient(135deg, #667eea, #764ba2);
-            color: white;
-            border: none;
-            padding: 15px 30px;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 16px;
-            margin: 0 10px;
-            transition: all 0.3s ease;
-        }
-        
-        .nav-button:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
-        }
-        
-        @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        @keyframes slideUp {
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-        
-        .variable-demo {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        @media (max-width: 768px) {
-            .variable-demo {
-                grid-template-columns: 1fr;
-            }
-            
-            .header h1 {
-                font-size: 2em;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <div class="header">
-            <h1>🐍 Módulo 2: Variables y Tipos de Datos</h1>
-            <p>Fundamentos de Programación en Python</p>
-            <div class="progress-bar">
-                <div class="progress-fill" id="progressBar"></div>
-            </div>
-        </div>
-
-        <!-- Introducción -->
-        <div class="content-section">
-            <h2>🎯 ¿Qué son las Variables?</h2>
-            <p>Imagina que las variables son como <strong>cajas etiquetadas</strong> donde puedes guardar diferentes tipos de información. En programación, una variable es un espacio en la memoria de la computadora donde almacenamos datos que podemos usar y modificar durante la ejecución de nuestro programa.</p>
-            
-            <div class="concept-card">
-                <h3>Analogía del Mundo Real</h3>
-                <p>🏠 <strong>Variable = Caja en tu casa</strong></p>
-                <p>• <strong>Nombre de la variable</strong> = Etiqueta en la caja ("Ropa de invierno")</p>
-                <p>• <strong>Valor de la variable</strong> = Contenido de la caja (suéteres, abrigos, etc.)</p>
-                <p>• <strong>Tipo de dato</strong> = Tipo de contenido (ropa, libros, juguetes, etc.)</p>
-            </div>
-        </div>
-
-        <!-- Creación de Variables -->
-        <div class="content-section">
-            <h2>📝 Creando Variables en Python</h2>
-            <p>En Python, crear una variable es muy sencillo. Solo necesitas escribir el nombre de la variable, el signo igual (=), y el valor que quieres almacenar.</p>
-            
-            <div class="code-container">
-                <div class="code" id="code1"># Creando variables - es como etiquetar cajas
-nombre = "Ana"           # Una caja llamada 'nombre' con el texto "Ana"
-edad = 25               # Una caja llamada 'edad' con el número 25
-es_estudiante = True    # Una caja llamada 'es_estudiante' con True/False
-
-# Mostrando el contenido de nuestras cajas
-print("Nombre:", nombre)
-print("Edad:", edad)
-print("¿Es estudiante?", es_estudiante)</div>
-                <button class="run-button" onclick="ejecutarCodigo1()">▶️ Ejecutar Código</button>
-                <div class="output" id="output1">Haz clic en 'Ejecutar Código' para ver el resultado</div>
-            </div>
-
-            <div class="tip">
-                <strong>Reglas para nombres de variables:</strong><br>
-                ✅ Usar letras, números y guión bajo (_)<br>
-                ✅ Comenzar con letra o guión bajo<br>
-                ✅ Usar nombres descriptivos: <code>edad</code> en lugar de <code>x</code><br>
-                ❌ No usar espacios ni caracteres especiales<br>
-                ❌ No comenzar con números
-            </div>
-        </div>
-
-        <!-- Tipos de Datos -->
-        <div class="content-section">
-            <h2>🎨 Tipos de Datos en Python</h2>
-            <p>Python tiene diferentes tipos de "cajas" para diferentes tipos de información. Cada tipo de dato tiene características específicas:</p>
-            
-            <div class="variable-demo">
-                <div class="concept-card">
-                    <h3>🔤 Texto (str - String)</h3>
-                    <p>Para almacenar palabras, frases, nombres, etc.</p>
-                    <div class="code-container">
-                        <div class="code">nombre = "Juan"
-apellido = 'Pérez'
-frase = "¡Hola mundo!"</div>
-                    </div>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Módulo 2: Variables y Tipos de Datos en Python</title>
+        <link rel="stylesheet" href="css/mod2.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>🐍 Módulo 2: Variables y Tipos de Datos</h1>
+                <p>Fundamentos de Programación en Python</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
                 </div>
+            </div>
+
+            <!-- Introducción -->
+            <div class="content-section">
+                <h2>🎯 ¿Qué son las Variables?</h2>
+                <p>Imagina que las variables son como <strong>cajas etiquetadas</strong> donde puedes guardar diferentes tipos de información. En programación, una variable es un espacio en la memoria de la computadora donde almacenamos datos que podemos usar y modificar durante la ejecución de nuestro programa.</p>
                 
                 <div class="concept-card">
-                    <h3>🔢 Números Enteros (int)</h3>
-                    <p>Para almacenar números sin decimales.</p>
-                    <div class="code-container">
-                        <div class="code">edad = 30
-estudiantes = 25
-año = 2024</div>
-                    </div>
+                    <h3>Analogía del Mundo Real</h3>
+                    <p>🏠 <strong>Variable = Caja en tu casa</strong></p>
+                    <p>• <strong>Nombre de la variable</strong> = Etiqueta en la caja ("Ropa de invierno")</p>
+                    <p>• <strong>Valor de la variable</strong> = Contenido de la caja (suéteres, abrigos, etc.)</p>
+                    <p>• <strong>Tipo de dato</strong> = Tipo de contenido (ropa, libros, juguetes, etc.)</p>
                 </div>
+            </div>
+
+            <!-- Creación de Variables -->
+            <div class="content-section">
+                <h2>📝 Creando Variables en Python</h2>
+                <p>En Python, crear una variable es muy sencillo. Solo necesitas escribir el nombre de la variable, el signo igual (=), y el valor que quieres almacenar.</p>
                 
-                <div class="concept-card">
-                    <h3>🔢 Números Decimales (float)</h3>
-                    <p>Para almacenar números con decimales.</p>
-                    <div class="code-container">
-                        <div class="code">altura = 1.75
-precio = 99.99
-temperatura = -5.2</div>
-                    </div>
+                <div class="code-container">
+                    <div class="code" id="code1"># Creando variables - es como etiquetar cajas
+    nombre = "Ana"           # Una caja llamada 'nombre' con el texto "Ana"
+    edad = 25               # Una caja llamada 'edad' con el número 25
+    es_estudiante = True    # Una caja llamada 'es_estudiante' con True/False
+
+    # Mostrando el contenido de nuestras cajas
+    print("Nombre:", nombre)
+    print("Edad:", edad)
+    print("¿Es estudiante?", es_estudiante)</div>
+                    <button class="run-button" onclick="ejecutarCodigo1()">▶️ Ejecutar Código</button>
+                    <div class="output" id="output1">Haz clic en 'Ejecutar Código' para ver el resultado</div>
                 </div>
+
+                <div class="tip">
+                    <strong>Reglas para nombres de variables:</strong><br>
+                    ✅ Usar letras, números y guión bajo (_)<br>
+                    ✅ Comenzar con letra o guión bajo<br>
+                    ✅ Usar nombres descriptivos: <code>edad</code> en lugar de <code>x</code><br>
+                    ❌ No usar espacios ni caracteres especiales<br>
+                    ❌ No comenzar con números
+                </div>
+            </div>
+
+            <!-- Tipos de Datos -->
+            <div class="content-section">
+                <h2>🎨 Tipos de Datos en Python</h2>
+                <p>Python tiene diferentes tipos de "cajas" para diferentes tipos de información. Cada tipo de dato tiene características específicas:</p>
                 
-                <div class="concept-card">
-                    <h3>✅ Booleanos (bool)</h3>
-                    <p>Para almacenar valores de Verdadero/Falso.</p>
-                    <div class="code-container">
-                        <div class="code">es_mayor_edad = True
-tiene_licencia = False
-esta_activo = True</div>
+                <div class="variable-demo">
+                    <div class="concept-card">
+                        <h3>🔤 Texto (str - String)</h3>
+                        <p>Para almacenar palabras, frases, nombres, etc.</p>
+                        <div class="code-container">
+                            <div class="code">nombre = "Juan"
+    apellido = 'Pérez'
+    frase = "¡Hola mundo!"</div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-card">
+                        <h3>🔢 Números Enteros (int)</h3>
+                        <p>Para almacenar números sin decimales.</p>
+                        <div class="code-container">
+                            <div class="code">edad = 30
+    estudiantes = 25
+    año = 2024</div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-card">
+                        <h3>🔢 Números Decimales (float)</h3>
+                        <p>Para almacenar números con decimales.</p>
+                        <div class="code-container">
+                            <div class="code">altura = 1.75
+    precio = 99.99
+    temperatura = -5.2</div>
+                        </div>
+                    </div>
+                    
+                    <div class="concept-card">
+                        <h3>✅ Booleanos (bool)</h3>
+                        <p>Para almacenar valores de Verdadero/Falso.</p>
+                        <div class="code-container">
+                            <div class="code">es_mayor_edad = True
+    tiene_licencia = False
+    esta_activo = True</div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Ejemplo Práctico -->
-        <div class="content-section">
-            <h2>🚀 Ejemplo Práctico: Perfil de Usuario</h2>
-            <p>Veamos cómo usar diferentes tipos de datos para crear el perfil de un usuario de una aplicación:</p>
-            
-            <div class="code-container">
-                <div class="code" id="code2"># Perfil de usuario para una aplicación
-usuario_nombre = "María González"
-usuario_edad = 28
-usuario_email = "maria.gonzalez@email.com"
-es_usuario_premium = True
-saldo_cuenta = 150.75
-numero_seguidores = 1250
+            <!-- Ejemplo Práctico -->
+            <div class="content-section">
+                <h2>🚀 Ejemplo Práctico: Perfil de Usuario</h2>
+                <p>Veamos cómo usar diferentes tipos de datos para crear el perfil de un usuario de una aplicación:</p>
+                
+                <div class="code-container">
+                    <div class="code" id="code2"># Perfil de usuario para una aplicación
+    usuario_nombre = "María González"
+    usuario_edad = 28
+    usuario_email = "maria.gonzalez@email.com"
+    es_usuario_premium = True
+    saldo_cuenta = 150.75
+    numero_seguidores = 1250
 
-# Mostrando la información del perfil
-print("=== PERFIL DE USUARIO ===")
-print(f"Nombre: {usuario_nombre}")
-print(f"Edad: {usuario_edad} años")
-print(f"Email: {usuario_email}")
-print(f"Usuario Premium: {es_usuario_premium}")
-print(f"Saldo en cuenta: ${saldo_cuenta}")
-print(f"Seguidores: {numero_seguidores}")
+    # Mostrando la información del perfil
+    print("=== PERFIL DE USUARIO ===")
+    print(f"Nombre: {usuario_nombre}")
+    print(f"Edad: {usuario_edad} años")
+    print(f"Email: {usuario_email}")
+    print(f"Usuario Premium: {es_usuario_premium}")
+    print(f"Saldo en cuenta: ${saldo_cuenta}")
+    print(f"Seguidores: {numero_seguidores}")
 
-# Verificando los tipos de datos
-print("\n=== TIPOS DE DATOS ===")
-print(f"Tipo de 'usuario_nombre': {type(usuario_nombre)}")
-print(f"Tipo de 'usuario_edad': {type(usuario_edad)}")
-print(f"Tipo de 'es_usuario_premium': {type(es_usuario_premium)}")
-print(f"Tipo de 'saldo_cuenta': {type(saldo_cuenta)}")</div>
-                <button class="run-button" onclick="ejecutarCodigo2()">▶️ Ejecutar Código</button>
-                <div class="output" id="output2">Haz clic en 'Ejecutar Código' para ver el resultado</div>
+    # Verificando los tipos de datos
+    print("\n=== TIPOS DE DATOS ===")
+    print(f"Tipo de 'usuario_nombre': {type(usuario_nombre)}")
+    print(f"Tipo de 'usuario_edad': {type(usuario_edad)}")
+    print(f"Tipo de 'es_usuario_premium': {type(es_usuario_premium)}")
+    print(f"Tipo de 'saldo_cuenta': {type(saldo_cuenta)}")</div>
+                    <button class="run-button" onclick="ejecutarCodigo2()">▶️ Ejecutar Código</button>
+                    <div class="output" id="output2">Haz clic en 'Ejecutar Código' para ver el resultado</div>
+                </div>
             </div>
-        </div>
 
-        <!-- Operaciones con Variables -->
-        <div class="content-section">
-            <h2>🔧 Operaciones con Variables</h2>
-            <p>Una vez que tenemos variables, podemos realizar operaciones con ellas, modificarlas y combinarlas:</p>
-            
-            <div class="code-container">
-                <div class="code" id="code3"># Operaciones con números
-precio_producto = 100
-descuento = 15
-precio_final = precio_producto - descuento
-print(f"Precio original: ${precio_producto}")
-print(f"Descuento: ${descuento}")
-print(f"Precio final: ${precio_final}")
+            <!-- Operaciones con Variables -->
+            <div class="content-section">
+                <h2>🔧 Operaciones con Variables</h2>
+                <p>Una vez que tenemos variables, podemos realizar operaciones con ellas, modificarlas y combinarlas:</p>
+                
+                <div class="code-container">
+                    <div class="code" id="code3"># Operaciones con números
+    precio_producto = 100
+    descuento = 15
+    precio_final = precio_producto - descuento
+    print(f"Precio original: ${precio_producto}")
+    print(f"Descuento: ${descuento}")
+    print(f"Precio final: ${precio_final}")
 
-print("\n" + "="*30)
+    print("\n" + "="*30)
 
-# Operaciones con texto
-nombre = "Carlos"
-apellido = "López"
-nombre_completo = nombre + " " + apellido
-print(f"Nombre: {nombre}")
-print(f"Apellido: {apellido}")
-print(f"Nombre completo: {nombre_completo}")
+    # Operaciones con texto
+    nombre = "Carlos"
+    apellido = "López"
+    nombre_completo = nombre + " " + apellido
+    print(f"Nombre: {nombre}")
+    print(f"Apellido: {apellido}")
+    print(f"Nombre completo: {nombre_completo}")
 
-print("\n" + "="*30)
+    print("\n" + "="*30)
 
-# Modificando variables
-puntos = 100
-print(f"Puntos iniciales: {puntos}")
-puntos = puntos + 50  # Sumamos 50 puntos
-print(f"Puntos después de ganar: {puntos}")
-puntos = puntos - 25  # Restamos 25 puntos
-print(f"Puntos después de gastar: {puntos}")</div>
-                <button class="run-button" onclick="ejecutarCodigo3()">▶️ Ejecutar Código</button>
-                <div class="output" id="output3">Haz clic en 'Ejecutar Código' para ver el resultado</div>
+    # Modificando variables
+    puntos = 100
+    print(f"Puntos iniciales: {puntos}")
+    puntos = puntos + 50  # Sumamos 50 puntos
+    print(f"Puntos después de ganar: {puntos}")
+    puntos = puntos - 25  # Restamos 25 puntos
+    print(f"Puntos después de gastar: {puntos}")</div>
+                    <button class="run-button" onclick="ejecutarCodigo3()">▶️ Ejecutar Código</button>
+                    <div class="output" id="output3">Haz clic en 'Ejecutar Código' para ver el resultado</div>
+                </div>
             </div>
-        </div>
 
-        <!-- Ejercicio 1 -->
-        <div class="exercise">
-            <h3>🏋️‍♀️ Ejercicio 1: Crea tu Perfil Personal</h3>
-            <p>Crea variables para almacenar tu información personal y muéstrala en pantalla. Incluye:</p>
-            <ul>
-                <li>Tu nombre completo (texto)</li>
-                <li>Tu edad (número entero)</li>
-                <li>Tu altura en metros (número decimal)</li>
-                <li>Si eres estudiante o no (booleano)</li>
-            </ul>
-            <p><strong>Pista:</strong> Usa <code>print()</code> para mostrar cada variable con un mensaje descriptivo.</p>
-            
-            <textarea class="input-area" id="exercise1" placeholder="# Escribe tu código aquí
-# Ejemplo:
-# mi_nombre = 'Tu nombre aquí'
-# mi_edad = 20
-# ... continúa con las demás variables"></textarea>
-            <br>
-            <button class="check-button" onclick="verificarEjercicio1()">✅ Verificar Respuesta</button>
-            <div class="feedback" id="feedback1" style="display: none;"></div>
-        </div>
-
-        <!-- Ejercicio 2 -->
-        <div class="exercise">
-            <h3>🧮 Ejercicio 2: Calculadora Simple</h3>
-            <p>Crea un programa que:</p>
-            <ol>
-                <li>Defina dos números (pueden ser enteros o decimales)</li>
-                <li>Calcule y muestre la suma, resta, multiplicación y división</li>
-                <li>Use variables con nombres descriptivos</li>
-            </ol>
-            
-            <textarea class="input-area" id="exercise2" placeholder="# Escribe tu código aquí
-# Define dos números y realiza las operaciones básicas"></textarea>
-            <br>
-            <button class="check-button" onclick="verificarEjercicio2()">✅ Verificar Respuesta</button>
-            <div class="feedback" id="feedback2" style="display: none;"></div>
-        </div>
-
-        <!-- Resumen -->
-        <div class="content-section">
-            <h2>📚 Resumen del Módulo</h2>
-            <div class="concept-card">
-                <h3>🎯 Conceptos Clave Aprendidos:</h3>
+            <!-- Ejercicio 1 -->
+            <div class="exercise">
+                <h3>🏋️‍♀️ Ejercicio 1: Crea tu Perfil Personal</h3>
+                <p>Crea variables para almacenar tu información personal y muéstrala en pantalla. Incluye:</p>
                 <ul>
-                    <li><strong>Variables:</strong> Espacios en memoria para almacenar datos</li>
-                    <li><strong>Tipos de datos:</strong> str (texto), int (enteros), float (decimales), bool (verdadero/falso)</li>
-                    <li><strong>Asignación:</strong> Usar el símbolo = para guardar valores</li>
-                    <li><strong>Operaciones:</strong> Sumar, restar, concatenar texto</li>
-                    <li><strong>Buenas prácticas:</strong> Nombres descriptivos y reglas de nomenclatura</li>
+                    <li>Tu nombre completo (texto)</li>
+                    <li>Tu edad (número entero)</li>
+                    <li>Tu altura en metros (número decimal)</li>
+                    <li>Si eres estudiante o no (booleano)</li>
                 </ul>
+                <p><strong>Pista:</strong> Usa <code>print()</code> para mostrar cada variable con un mensaje descriptivo.</p>
+                
+                <textarea class="input-area" id="exercise1" placeholder="# Escribe tu código aquí
+    # Ejemplo:
+    # mi_nombre = 'Tu nombre aquí'
+    # mi_edad = 20
+    # ... continúa con las demás variables"></textarea>
+                <br>
+                <button class="check-button" onclick="verificarEjercicio1()">✅ Verificar Respuesta</button>
+                <div class="feedback" id="feedback1" style="display: none;"></div>
             </div>
-            
-            <div class="tip">
-                <strong>Para el próximo módulo:</strong> Aprenderemos sobre operadores y expresiones para crear programas más dinámicos e interactivos.
+
+            <!-- Ejercicio 2 -->
+            <div class="exercise">
+                <h3>🧮 Ejercicio 2: Calculadora Simple</h3>
+                <p>Crea un programa que:</p>
+                <ol>
+                    <li>Defina dos números (pueden ser enteros o decimales)</li>
+                    <li>Calcule y muestre la suma, resta, multiplicación y división</li>
+                    <li>Use variables con nombres descriptivos</li>
+                </ol>
+                
+                <textarea class="input-area" id="exercise2" placeholder="# Escribe tu código aquí
+    # Define dos números y realiza las operaciones básicas"></textarea>
+                <br>
+                <button class="check-button" onclick="verificarEjercicio2()">✅ Verificar Respuesta</button>
+                <div class="feedback" id="feedback2" style="display: none;"></div>
+            </div>
+
+            <!-- Resumen -->
+            <div class="content-section">
+                <h2>📚 Resumen del Módulo</h2>
+                <div class="concept-card">
+                    <h3>🎯 Conceptos Clave Aprendidos:</h3>
+                    <ul>
+                        <li><strong>Variables:</strong> Espacios en memoria para almacenar datos</li>
+                        <li><strong>Tipos de datos:</strong> str (texto), int (enteros), float (decimales), bool (verdadero/falso)</li>
+                        <li><strong>Asignación:</strong> Usar el símbolo = para guardar valores</li>
+                        <li><strong>Operaciones:</strong> Sumar, restar, concatenar texto</li>
+                        <li><strong>Buenas prácticas:</strong> Nombres descriptivos y reglas de nomenclatura</li>
+                    </ul>
+                </div>
+                
+                <div class="tip">
+                    <strong>Para el próximo módulo:</strong> Aprenderemos sobre operadores y expresiones para crear programas más dinámicos e interactivos.
+                </div>
+            </div>
+
+            <div class="navigation">
+                <a href="mod_1.html" class="nav-button">⬅️ Módulo 1</a>
+                <a href="mod_3.html" class="nav-button">➡️ Módulo 3</button>
             </div>
         </div>
-
-        <div class="navigation">
-            <button class="nav-button">⬅️ Módulo Anterior</button>
-            <button class="nav-button">➡️ Próximo Módulo</button>
-        </div>
-    </div>
-
-    <script>
-        // Actualizar barra de progreso
-        let progreso = 0;
-        
-        function actualizarProgreso() {
-            progreso += 12.5; // 8 secciones = 12.5% cada una
-            if (progreso > 100) progreso = 100;
-            document.getElementById('progressBar').style.width = progreso + '%';
-        }
-
-        // Función para ejecutar código 1
-        function ejecutarCodigo1() {
-            const output = `Nombre: Ana
-Edad: 25
-¿Es estudiante? True`;
-            document.getElementById('output1').textContent = output;
-            actualizarProgreso();
-        }
-
-        // Función para ejecutar código 2
-        function ejecutarCodigo2() {
-            const output = `=== PERFIL DE USUARIO ===
-Nombre: María González
-Edad: 28 años
-Email: maria.gonzalez@email.com
-Usuario Premium: True
-Saldo en cuenta: $150.75
-Seguidores: 1250
-
-=== TIPOS DE DATOS ===
-Tipo de 'usuario_nombre': <class 'str'>
-Tipo de 'usuario_edad': <class 'int'>
-Tipo de 'es_usuario_premium': <class 'bool'>
-Tipo de 'saldo_cuenta': <class 'float'>`;
-            document.getElementById('output2').textContent = output;
-            actualizarProgreso();
-        }
-
-        // Función para ejecutar código 3
-        function ejecutarCodigo3() {
-            const output = `Precio original: $100
-Descuento: $15
-Precio final: $85
-
-==============================
-Nombre: Carlos
-Apellido: López
-Nombre completo: Carlos López
-
-==============================
-Puntos iniciales: 100
-Puntos después de ganar: 150
-Puntos después de gastar: 125`;
-            document.getElementById('output3').textContent = output;
-            actualizarProgreso();
-        }
-
-        // Verificar ejercicio 1
-        function verificarEjercicio1() {
-            const codigo = document.getElementById('exercise1').value.trim();
-            const feedback = document.getElementById('feedback1');
-            
-            // Verificaciones básicas
-            const tieneNombre = /\w+\s*=\s*["'][^"']+["']/.test(codigo);
-            const tieneEdad = /\w+\s*=\s*\d+/.test(codigo);
-            const tieneAltura = /\w+\s*=\s*\d+\.\d+/.test(codigo);
-            const tieneBool = /(True|False)/.test(codigo);
-            const tienePrint = /print\s*\(/.test(codigo);
-            
-            feedback.style.display = 'block';
-            
-            if (codigo.length < 50) {
-                feedback.className = 'feedback incorrect';
-                feedback.textContent = '❌ Tu código parece muy corto. Asegúrate de incluir todas las variables solicitadas y los print statements.';
-            } else if (!tieneNombre || !tieneEdad || !tieneAltura || !tieneBool) {
-                feedback.className = 'feedback incorrect';
-                feedback.textContent = '❌ Parece que te faltan algunas variables. Verifica que tengas: nombre (texto), edad (entero), altura (decimal), y si eres estudiante (booleano).';
-            } else if (!tienePrint) {
-                feedback.className = 'feedback incorrect';
-                feedback.textContent = '❌ No olvides usar print() para mostrar tus variables en pantalla.';
-            } else {
-                feedback.className = 'feedback correct';
-                feedback.textContent = '✅ ¡Excelente! Has creado correctamente variables de diferentes tipos y las has mostrado en pantalla. ¡Continúa así!';
-                actualizarProgreso();
-            }
-        }
-
-        // Verificar ejercicio 2
-        function verificarEjercicio2() {
-            const codigo = document.getElementById('exercise2').value.trim();
-            const feedback = document.getElementById('feedback2');
-            
-            // Verificaciones básicas
-            const tieneNumeros = (codigo.match(/\w+\s*=\s*\d+/g) || []).length >= 2;
-            const tieneSuma = /\+/.test(codigo);
-            const tieneResta = /-/.test(codigo);
-            const tieneMultiplicacion = /\*/.test(codigo);
-            const tieneDivision = /\//.test(codigo);
-            const tienePrint = /print\s*\(/.test(codigo);
-            
-            feedback.style.display = 'block';
-            
-            if (codigo.length < 100) {
-                feedback.className = 'feedback incorrect';
-                feedback.textContent = '❌ Tu código parece incompleto. Asegúrate de definir dos números y realizar las cuatro operaciones básicas.';
-            } else if (!tieneNumeros) {
-                feedback.className = 'feedback incorrect';
-                feedback.textContent = '❌ Necesitas definir al menos dos variables numéricas para realizar los cálculos.';
-            } else if (!tieneSuma || !tieneResta || !tieneMultiplicacion || !tieneDivision) {
-                feedback.className = 'feedback incorrect';
-                feedback.textContent = '❌ Asegúrate de incluir las cuatro operaciones: suma (+), resta (-), multiplicación (*), y división (/).';
-            } else if (!tienePrint) {
-                feedback.className = 'feedback incorrect';
-                feedback.textContent = '❌ No olvides mostrar los resultados usando print().';
-            } else {
-                feedback.className = 'feedback correct';
-                feedback.textContent = '✅ ¡Perfecto! Has creado una calculadora simple usando variables y operaciones básicas. ¡Muy buen trabajo!';
-                actualizarProgreso();
-            }
-        }
-
-        // Animar las secciones cuando se cargan
-        window.addEventListener('load', function() {
-            const sections = document.querySelectorAll('.content-section');
-            sections.forEach((section, index) => {
-                section.style.animationDelay = (index * 0.2) + 's';
-            });
-        });
-    </script>
-</body>
+        <script src="js/mod2.js"></script>
+    </body>
 </html>

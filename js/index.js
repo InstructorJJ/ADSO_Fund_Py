@@ -5,7 +5,7 @@ const modules = [
         description: "Instalación de Python, configuración del entorno de desarrollo y tu primer programa 'Hola Mundo'.",
         duration: "2 horas",
         exercises: 3,
-        status: "available",
+        status: "current",
         topics: ["Instalación de Python", "IDE y editores", "Primer programa", "Conceptos básicos"]
     },
     {
@@ -13,7 +13,7 @@ const modules = [
         description: "Aprende sobre variables, números, cadenas, booleanos y cómo Python maneja los diferentes tipos de datos.",
         duration: "3 horas",
         exercises: 6,
-        status: "locked",
+        status: "available",
         topics: ["Variables", "Números", "Cadenas", "Booleanos", "Conversiones"]
     },
     {

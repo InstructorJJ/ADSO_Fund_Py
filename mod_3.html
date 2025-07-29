@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Módulo 3: Operadores y Expresiones</title>
+        <link rel="stylesheet" href="css/mod3.css">
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header -->
+            <div class="header">
+                <h1 class="module-title">Módulo 3: Operadores y Expresiones</h1>
+                <p class="module-subtitle">Construcción de lógica básica en programación</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p style="margin-top: 10px; color: #7f8c8d;">Progreso del curso: 37.5% (3 de 8 módulos)</p>
+            </div>
+
+            <!-- Grid de contenido principal -->
+            <div class="content-grid">
+                <!-- Operadores Aritméticos -->
+                <div class="content-card">
+                    <h2 class="section-title">
+                        <div class="icon" style="background: #e74c3c;">+</div>
+                        Operadores Aritméticos
+                    </h2>
+                    
+                    <div class="operator-group">
+                        <h3 class="operator-title">Operaciones Básicas</h3>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">+</span>
+                            <span class="operator-desc">Suma</span>
+                            <span class="operator-example">5 + 3 = 8</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">-</span>
+                            <span class="operator-desc">Resta</span>
+                            <span class="operator-example">10 - 4 = 6</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">*</span>
+                            <span class="operator-desc">Multiplicación</span>
+                            <span class="operator-example">7 * 3 = 21</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">/</span>
+                            <span class="operator-desc">División</span>
+                            <span class="operator-example">15 / 3 = 5.0</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">//</span>
+                            <span class="operator-desc">División entera</span>
+                            <span class="operator-example">17 // 5 = 3</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">%</span>
+                            <span class="operator-desc">Módulo (resto)</span>
+                            <span class="operator-example">17 % 5 = 2</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">**</span>
+                            <span class="operator-desc">Potencia</span>
+                            <span class="operator-example">2 ** 3 = 8</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Operadores de Comparación -->
+                <div class="content-card">
+                    <h2 class="section-title">
+                        <div class="icon" style="background: #3498db;">=</div>
+                        Operadores de Comparación
+                    </h2>
+                    
+                    <div class="operator-group">
+                        <h3 class="operator-title">Comparaciones</h3>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">==</span>
+                            <span class="operator-desc">Igual a</span>
+                            <span class="operator-example">5 == 5 → True</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">!=</span>
+                            <span class="operator-desc">Diferente de</span>
+                            <span class="operator-example">5 != 3 → True</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">></span>
+                            <span class="operator-desc">Mayor que</span>
+                            <span class="operator-example">8 > 5 → True</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol"><</span>
+                            <span class="operator-desc">Menor que</span>
+                            <span class="operator-example">3 < 7 → True</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">>=</span>
+                            <span class="operator-desc">Mayor o igual</span>
+                            <span class="operator-example">5 >= 5 → True</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol"><=</span>
+                            <span class="operator-desc">Menor o igual</span>
+                            <span class="operator-example">4 <= 6 → True</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Operadores Lógicos -->
+            <div class="content-grid">
+                <div class="content-card">
+                    <h2 class="section-title">
+                        <div class="icon" style="background: #9b59b6;">&&</div>
+                        Operadores Lógicos
+                    </h2>
+                    
+                    <div class="operator-group">
+                        <h3 class="operator-title">Lógica Booleana</h3>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">and</span>
+                            <span class="operator-desc">Y lógico</span>
+                            <span class="operator-example">True and False → False</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">or</span>
+                            <span class="operator-desc">O lógico</span>
+                            <span class="operator-example">True or False → True</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">not</span>
+                            <span class="operator-desc">Negación</span>
+                            <span class="operator-example">not True → False</span>
+                        </div>
+                    </div>
+
+                    <h3 class="operator-title">Tabla de Verdad</h3>
+                    <table class="truth-table">
+                        <thead>
+                            <tr>
+                                <th>A</th>
+                                <th>B</th>
+                                <th>A and B</th>
+                                <th>A or B</th>
+                                <th>not A</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>True</td>
+                                <td>True</td>
+                                <td>True</td>
+                                <td>True</td>
+                                <td>False</td>
+                            </tr>
+                            <tr>
+                                <td>True</td>
+                                <td>False</td>
+                                <td>False</td>
+                                <td>True</td>
+                                <td>False</td>
+                            </tr>
+                            <tr>
+                                <td>False</td>
+                                <td>True</td>
+                                <td>False</td>
+                                <td>True</td>
+                                <td>True</td>
+                            </tr>
+                            <tr>
+                                <td>False</td>
+                                <td>False</td>
+                                <td>False</td>
+                                <td>False</td>
+                                <td>True</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Operadores de Asignación -->
+                <div class="content-card">
+                    <h2 class="section-title">
+                        <div class="icon" style="background: #f39c12;">:=</div>
+                        Operadores de Asignación
+                    </h2>
+                    
+                    <div class="operator-group">
+                        <h3 class="operator-title">Asignación Compuesta</h3>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">=</span>
+                            <span class="operator-desc">Asignación simple</span>
+                            <span class="operator-example">x = 5</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">+=</span>
+                            <span class="operator-desc">Suma y asigna</span>
+                            <span class="operator-example">x += 3 → x = x + 3</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">-=</span>
+                            <span class="operator-desc">Resta y asigna</span>
+                            <span class="operator-example">x -= 2 → x = x - 2</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">*=</span>
+                            <span class="operator-desc">Multiplica y asigna</span>
+                            <span class="operator-example">x *= 4 → x = x * 4</span>
+                        </div>
+                        
+                        <div class="operator-item">
+                            <span class="operator-symbol">/=</span>
+                            <span class="operator-desc">Divide y asigna</span>
+                            <span class="operator-example">x /= 2 → x = x / 2</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calculadora Interactiva -->
+            <div class="interactive-section">
+                <h2 class="section-title">
+                    <div class="icon" style="background: #27ae60;">🧮</div>
+                    Calculadora de Expresiones
+                </h2>
+                <p style="margin-bottom: 20px; color: #7f8c8d;">Experimenta con diferentes operadores y ve los resultados en tiempo real</p>
+                
+                <div class="calculator">
+                    <div class="calc-input">
+                        <h3 style="margin-bottom: 15px; color: #2c3e50;">Entrada</h3>
+                        
+                        <div class="input-group">
+                            <label>Primer número (a):</label>
+                            <input type="number" id="num1" value="10" step="0.1">
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Operador:</label>
+                            <select id="operator">
+                                <option value="+">+ (Suma)</option>
+                                <option value="-">- (Resta)</option>
+                                <option value="*">* (Multiplicación)</option>
+                                <option value="/"># (División)</option>
+                                <option value="//"># (División entera)</option>
+                                <option value="%">% (Módulo)</option>
+                                <option value="**">** (Potencia)</option>
+                                <option value="=="># (Igual a)</option>
+                                <option value="!="># (Diferente)</option>
+                                <option value=">"> (Mayor que)</option>
+                                <option value="<">< (Menor que)</option>
+                                <option value=">="># (Mayor o igual)</option>
+                                <option value="<="># (Menor o igual)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="input-group">
+                            <label>Segundo número (b):</label>
+                            <input type="number" id="num2" value="5" step="0.1">
+                        </div>
+                        
+                        <button class="calc-button" onclick="calcular()">Calcular Expresión</button>
+                    </div>
+                    
+                    <div class="calc-result">
+                        <h3 style="margin-bottom: 15px; color: #2c3e50;">Resultado</h3>
+                        <div class="result-display" id="result">
+                            Ingresa valores y presiona calcular
+                        </div>
+                        
+                        <div style="margin-top: 15px; padding: 15px; background: #f8f9fa; border-radius: 10px;">
+                            <strong>Expresión:</strong> <span id="expression">a operador b</span><br>
+                            <strong>Código Python:</strong> <span id="pythonCode" style="font-family: monospace; color: #e74c3c;">print(a operador b)</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejemplos Prácticos -->
+            <div class="content-grid">
+                <div class="content-card">
+                    <h2 class="section-title">
+                        <div class="icon" style="background: #e67e22;">💡</div>
+                        Ejemplos Prácticos
+                    </h2>
+                    
+                    <h3 style="color: #2c3e50; margin-bottom: 15px;">Sistema de Calificaciones</h3>
+                    <div class="code-example">
+    <span class="python-comment"># Sistema de calificaciones con operadores</span>
+    <span class="python-keyword">def</span> evaluar_estudiante(nota):
+        <span class="python-comment"># Operadores de comparación</span>
+        <span class="python-keyword">if</span> nota <span class="python-operator">>=</span> <span class="python-number">90</span>:
+            calificacion = <span class="python-string">"Excelente"</span>
+        <span class="python-keyword">elif</span> nota <span class="python-operator">>=</span> <span class="python-number">80</span>:
+            calificacion = <span class="python-string">"Bueno"</span>
+        <span class="python-keyword">elif</span> nota <span class="python-operator">>=</span> <span class="python-number">70</span>:
+            calificacion = <span class="python-string">"Regular"</span>
+        <span class="python-keyword">else</span>:
+            calificacion = <span class="python-string">"Necesita mejorar"</span>
+        
+        <span class="python-comment"># Operadores lógicos</span>
+        aprobado = nota <span class="python-operator">>=</span> <span class="python-number">70</span> <span class="python-keyword">and</span> nota <span class="python-operator"><=</span> <span class="python-number">100</span>
+        
+        <span class="python-keyword">return</span> calificacion, aprobado
+
+    <span class="python-comment"># Ejemplo de uso</span>
+    nota_estudiante = <span class="python-number">85</span>
+    resultado, estado = evaluar_estudiante(nota_estudiante)
+    <span class="python-keyword">print</span>(<span class="python-string">f"Nota: {nota_estudiante}"</span>)
+    <span class="python-keyword">print</span>(<span class="python-string">f"Calificación: {resultado}"</span>)
+    <span class="python-keyword">print</span>(<span class="python-string">f"Aprobado: {estado}"</span>)
+                    </div>
+                </div>
+
+                <div class="content-card">
+                    <h2 class="section-title">
+                        <div class="icon" style="background: #2ecc71;">🛒</div>
+                        Caso Real: E-commerce
+                    </h2>
+                    
+                    <h3 style="color: #2c3e50; margin-bottom: 15px;">Calculadora de Descuentos</h3>
+                    <div class="code-example">
+    <span class="python-comment"># Sistema de descuentos para tienda online</span>
+    <span class="python-keyword">def</span> calcular_precio_final(precio, cantidad, es_miembro):
+        <span class="python-comment"># Operadores aritméticos</span>
+        subtotal = precio <span class="python-operator">*</span> cantidad
+        
+        <span class="python-comment"># Operadores lógicos y de comparación</span>
+        descuento = <span class="python-number">0</span>
+        
+        <span class="python-keyword">if</span> cantidad <span class="python-operator">>=</span> <span class="python-number">10</span>:
+            descuento <span class="python-operator">+=</span> <span class="python-number">0.1</span>  <span class="python-comment"># 10% por volumen</span>
+        
+        <span class="python-keyword">if</span> es_miembro <span class="python-keyword">and</span> subtotal <span class="python-operator">></span> <span class="python-number">100</span>:
+            descuento <span class="python-operator">+=</span> <span class="python-number">0.05</span>  <span class="python-comment"># 5% adicional para miembros</span>
+        
+        <span class="python-comment"># Aplicar descuento</span>
+        precio_final = subtotal <span class="python-operator">*</span> (<span class="python-number">1</span> <span class="python-operator">-</span> descuento)
+        
+        <span class="python-keyword">return</span> subtotal, descuento <span class="python-operator">*</span> <span class="python-number">100</span>, precio_final
+
+    <span class="python-comment"># Ejemplo de uso</span>
+    precio_producto = <span class="python-number">25.99</span>
+    cantidad_compra = <span class="python-number">12</span>
+    cliente_miembro = <span class="python-keyword">True</span>
+
+    subtotal, descuento_pct, final = calcular_precio_final(
+        precio_producto, cantidad_compra, cliente_miembro
+    )
+
+    <span class="python-keyword">print</span>(<span class="python-string">f"Subtotal: ${subtotal:.2f}"</span>)
+    <span class="python-keyword">print</span>(<span class="python-string">f"Descuento: {descuento_pct}%"</span>)
+    <span class="python-keyword">print</span>(<span class="python-string">f"Total final: ${final:.2f}"</span>)
+                    </div>
+                </div>
+            </div>
+
+            <!-- Ejercicios Prácticos -->
+            <div class="exercises">
+                <h2 class="section-title" style="text-align: center; margin-bottom: 30px;">
+                    <div class="icon" style="background: #8e44ad;">📝</div>
+                    Ejercicios Prácticos
+                </h2>
+                
+                <!-- Ejercicio 1 -->
+                <div class="exercise-card">
+                    <h3 class="exercise-title">
+                        <span style="background: #3498db; color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">1</span>
+                        Validador de Contraseñas
+                    </h3>
+                    
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Crear un sistema que valide si una contraseña cumple con los criterios de seguridad.</p>
+                        <p><strong>Criterios:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Longitud entre 8 y 20 caracteres</li>
+                            <li>Debe contener al menos un número</li>
+                            <li>No debe ser igual a contraseñas comunes</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+    <span class="python-comment"># Completa el código usando operadores</span>
+    <span class="python-keyword">def</span> validar_contraseña(password):
+        longitud_valida = <span class="python-comment"># Tu código aquí</span>
+        tiene_numero = <span class="python-keyword">any</span>(c.isdigit() <span class="python-keyword">for</span> c <span class="python-keyword">in</span> password)
+        no_es_comun = password <span class="python-keyword">not in</span> [<span class="python-string">"12345678"</span>, <span class="python-string">"password"</span>]
+        
+        <span class="python-comment"># Usar operadores lógicos</span>
+        es_valida = <span class="python-comment"># Tu código aquí</span>
+        
+        <span class="python-keyword">return</span> es_valida
+
+    <span class="python-comment"># Prueba tu función</span>
+    <span class="python-keyword">print</span>(validar_contraseña(<span class="python-string">"abc123def"</span>))  <span class="python-comment"># True</span>
+    <span class="python-keyword">print</span>(validar_contraseña(<span class="python-string">"12345678"</span>))   <span class="python-comment"># False</span>
+                    </div>
+
+                    <div class="quiz-container">
+                        <div class="quiz-question">
+                            <p><strong>¿Qué operadores necesitas para validar la longitud?</strong></p>
+                            <div class="quiz-options">
+                                <label class="quiz-option" onclick="checkAnswer(this, false)">
+                                    <input type="radio" name="q1" style="margin-right: 10px;">
+                                    Solo el operador > (mayor que)
+                                </label>
+                                <label class="quiz-option" onclick="checkAnswer(this, true)">
+                                    <input type="radio" name="q1" style="margin-right: 10px;">
+                                    Los operadores >= y <= con and
+                                </label>
+                                <label class="quiz-option" onclick="checkAnswer(this, false)">
+                                    <input type="radio" name="q1" style="margin-right: 10px;">
+                                    Solo el operador == (igual)
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ejercicio 2 -->
+                <div class="exercise-card">
+                    <h3 class="exercise-title">
+                        <span style="background: #e74c3c; color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">2</span>
+                        Calculadora de IMC
+                    </h3>
+                    
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Crear una calculadora de Índice de Masa Corporal (IMC) que clasifique el resultado.</p>
+                        <p><strong>Fórmula:</strong> IMC = peso / (altura²)</p>
+                        <p><strong>Clasificaciones:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Bajo peso: IMC < 18.5</li>
+                            <li>Normal: 18.5 ≤ IMC < 25</li>
+                            <li>Sobrepeso: 25 ≤ IMC < 30</li>
+                            <li>Obesidad: IMC ≥ 30</li>
+                        </ul>
+                    </div>
+
+                    <div style="background: white; border-radius: 10px; padding: 20px; margin: 15px 0;">
+                        <h4 style="margin-bottom: 15px; color: #2c3e50;">Calculadora Interactiva de IMC</h4>
+                        
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 20px;">
+                            <div>
+                                <label style="display: block; margin-bottom: 5px; font-weight: 600;">Peso (kg):</label>
+                                <input type="number" id="peso" step="0.1" value="70" style="width: 100%; padding: 10px; border: 2px solid #e9ecef; border-radius: 5px;">
+                            </div>
+                            <div>
+                                <label style="display: block; margin-bottom: 5px; font-weight: 600;">Altura (m):</label>
+                                <input type="number" id="altura" step="0.01" value="1.75" style="width: 100%; padding: 10px; border: 2px solid #e9ecef; border-radius: 5px;">
+                            </div>
+                        </div>
+                        
+                        <button onclick="calcularIMC()" style="background: linear-gradient(45deg, #667eea, #764ba2); color: white; border: none; padding: 12px 24px; border-radius: 8px; font-weight: 600; cursor: pointer; margin-bottom: 15px;">
+                            Calcular IMC
+                        </button>
+                        
+                        <div id="resultadoIMC" style="background: #f8f9fa; padding: 15px; border-radius: 8px; margin-top: 15px; font-weight: 600; text-align: center;">
+                            Ingresa tus datos y presiona calcular
+                        </div>
+                    </div>
+
+                    <div class="code-example">
+    <span class="python-comment"># Implementa la lógica de clasificación</span>
+    <span class="python-keyword">def</span> calcular_imc(peso, altura):
+        imc = peso <span class="python-operator">/</span> (altura <span class="python-operator">**</span> <span class="python-number">2</span>)
+        
+        <span class="python-comment"># Usa operadores de comparación</span>
+        <span class="python-keyword">if</span> imc <span class="python-operator"><</span> <span class="python-number">18.5</span>:
+            categoria = <span class="python-string">"Bajo peso"</span>
+        <span class="python-keyword">elif</span> <span class="python-comment"># Tu código aquí</span>:
+            categoria = <span class="python-string">"Normal"</span>
+        <span class="python-keyword">elif</span> <span class="python-comment"># Tu código aquí</span>:
+            categoria = <span class="python-string">"Sobrepeso"</span>
+        <span class="python-keyword">else</span>:
+            categoria = <span class="python-string">"Obesidad"</span>
+        
+        <span class="python-keyword">return</span> <span class="python-keyword">round</span>(imc, <span class="python-number">2</span>), categoria
+                    </div>
+                </div>
+
+                <!-- Ejercicio 3 -->
+                <div class="exercise-card">
+                    <h3 class="exercise-title">
+                        <span style="background: #f39c12; color: white; border-radius: 50%; width: 25px; height: 25px; display: flex; align-items: center; justify-content: center; font-size: 0.9rem;">3</span>
+                        Sistema de Autenticación
+                    </h3>
+                    
+                    <div class="exercise-content">
+                        <p><strong>Problema:</strong> Implementar un sistema de login que verifique credenciales y controle intentos.</p>
+                        <p><strong>Reglas:</strong></p>
+                        <ul style="margin-left: 20px; margin-top: 10px;">
+                            <li>Máximo 3 intentos fallidos</li>
+                            <li>Usuario y contraseña deben coincidir</li>
+                            <li>Bloquear cuenta después del límite</li>
+                        </ul>
+                    </div>
+
+                    <div class="code-example">
+    <span class="python-comment"># Sistema de autenticación completo</span>
+    <span class="python-keyword">class</span> SistemaLogin:
+        <span class="python-keyword">def</span> __init__(self):
+            self.usuarios = {<span class="python-string">"admin"</span>: <span class="python-string">"123456"</span>, <span class="python-string">"user"</span>: <span class="python-string">"password"</span>}
+            self.intentos = {}
+            self.max_intentos = <span class="python-number">3</span>
+        
+        <span class="python-keyword">def</span> login(self, usuario, password):
+            <span class="python-comment"># Inicializar intentos si es necesario</span>
+            <span class="python-keyword">if</span> usuario <span class="python-keyword">not in</span> self.intentos:
+                self.intentos[usuario] = <span class="python-number">0</span>
+            
+            <span class="python-comment"># Verificar si está bloqueado</span>
+            esta_bloqueado = self.intentos[usuario] <span class="python-operator">>=</span> self.max_intentos
+            
+            <span class="python-keyword">if</span> esta_bloqueado:
+                <span class="python-keyword">return</span> <span class="python-string">"Cuenta bloqueada"</span>
+            
+            <span class="python-comment"># Verificar credenciales</span>
+            usuario_existe = usuario <span class="python-keyword">in</span> self.usuarios
+            password_correcto = usuario_existe <span class="python-keyword">and</span> self.usuarios[usuario] <span class="python-operator">==</span> password
+            
+            <span class="python-keyword">if</span> usuario_existe <span class="python-keyword">and</span> password_correcto:
+                self.intentos[usuario] = <span class="python-number">0</span>  <span class="python-comment"># Resetear intentos</span>
+                <span class="python-keyword">return</span> <span class="python-string">"Login exitoso"</span>
+            <span class="python-keyword">else</span>:
+                self.intentos[usuario] <span class="python-operator">+=</span> <span class="python-number">1</span>
+                intentos_restantes = self.max_intentos <span class="python-operator">-</span> self.intentos[usuario]
+                <span class="python-keyword">return</span> <span class="python-string">f"Credenciales incorrectas. Intentos restantes: {intentos_restantes}"</span>
+
+    <span class="python-comment"># Prueba el sistema</span>
+    sistema = SistemaLogin()
+    <span class="python-keyword">print</span>(sistema.login(<span class="python-string">"admin"</span>, <span class="python-string">"wrong"</span>))  <span class="python-comment"># Falla</span>
+    <span class="python-keyword">print</span>(sistema.login(<span class="python-string">"admin"</span>, <span class="python-string">"123456"</span>))  <span class="python-comment"># Éxito</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Resumen de Conceptos Clave -->
+            <div class="content-card" style="margin-top: 30px;">
+                <h2 class="section-title">
+                    <div class="icon" style="background: #27ae60;">✅</div>
+                    Resumen de Conceptos Clave
+                </h2>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; margin-top: 20px;">
+                    <div style="background: rgba(52, 152, 219, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #3498db;">
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">🔢 Operadores Aritméticos</h4>
+                        <p>Realizan cálculos matemáticos: +, -, *, /, //, %, **</p>
+                        <p><strong>Uso:</strong> Cálculos, contadores, transformaciones de datos</p>
+                    </div>
+                    
+                    <div style="background: rgba(155, 89, 182, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #9b59b6;">
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">⚖️ Operadores de Comparación</h4>
+                        <p>Comparan valores: ==, !=, >, <, >=, <=</p>
+                        <p><strong>Uso:</strong> Condiciones, validaciones, decisiones</p>
+                    </div>
+                    
+                    <div style="background: rgba(231, 76, 60, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #e74c3c;">
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">🧠 Operadores Lógicos</h4>
+                        <p>Combinan condiciones: and, or, not</p>
+                        <p><strong>Uso:</strong> Lógica compleja, filtros, validaciones</p>
+                    </div>
+                    
+                    <div style="background: rgba(243, 156, 18, 0.1); padding: 20px; border-radius: 10px; border-left: 4px solid #f39c12;">
+                        <h4 style="color: #2c3e50; margin-bottom: 10px;">📝 Operadores de Asignación</h4>
+                        <p>Asignan valores: =, +=, -=, *=, /=</p>
+                        <p><strong>Uso:</strong> Actualizar variables, acumular valores</p>
+                    </div>
+                </div>
+                
+                <div style="background: #f8f9fa; border-radius: 10px; padding: 20px; margin-top: 20px;">
+                    <h4 style="color: #2c3e50; margin-bottom: 15px;">💡 Tips para el Desarrollo</h4>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li><strong>Precedencia:</strong> Los operadores tienen un orden de evaluación (**, *, /, +, -, comparación, lógicos)</li>
+                        <li><strong>Paréntesis:</strong> Usa paréntesis para clarificar expresiones complejas</li>
+                        <li><strong>Legibilidad:</strong> Divide expresiones largas en múltiples líneas</li>
+                        <li><strong>Validación:</strong> Siempre valida datos antes de operaciones críticas</li>
+                        <li><strong>Debugging:</strong> Imprime valores intermedios para depurar lógica compleja</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Navegación -->
+            <div class="navigation">
+                <a href="mod_2.html" class="nav-button">⬅️ Módulo 2</a>
+                
+                <div style="text-align: center;">
+                    <p style="margin: 0; color: #7f8c8d;">Módulo 3 de 8</p>
+                    <p style="margin: 5px 0 0 0; font-size: 0.9rem; color: #95a5a6;">Operadores y Expresiones</p>
+                </div>
+                <a href="mod_4.html" class="nav-button">Módulo 4 ➡️</a>
+            </div>
+        </div>
+        <script src="js/mod3.js"></script>
+    </body>
+</html>
