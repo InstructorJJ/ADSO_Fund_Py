@@ -1,0 +1,816 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 4: Estructuras de Control</title>
+    <link rel="stylesheet" href="css/mod4.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header del Módulo -->
+        <div class="header">
+            <h1 class="module-title">Módulo 4: Estructuras de Control</h1>
+            <p class="module-subtitle">if, for, while para control de flujo - Fundamentos de Programación con Python</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+
+        <!-- Navegación por pestañas -->
+        <div class="nav-tabs">
+            <button class="nav-tab active" onclick="showSection('introduccion')">Introducción</button>
+            <button class="nav-tab" onclick="showSection('if-elif-else')">if/elif/else</button>
+            <button class="nav-tab" onclick="showSection('bucle-for')">Bucle for</button>
+            <button class="nav-tab" onclick="showSection('bucle-while')">Bucle while</button>
+            <button class="nav-tab" onclick="showSection('ejercicios')">Ejercicios</button>
+            <button class="nav-tab" onclick="showSection('evaluacion')">Evaluación</button>
+            <button class="nav-tab" onclick="showSection('resumen')">Resumen</button>
+        </div>
+
+        <!-- Sección: Introducción -->
+        <div id="introduccion" class="content-section active">
+            <h2>🎯 Introducción a las Estructuras de Control</h2>
+            
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">?</div>
+                    ¿Qué son las Estructuras de Control?
+                </div>
+                <p>Las estructuras de control son fundamentales en programación. Nos permiten dirigir el flujo de ejecución de nuestro programa, decidiendo qué código ejecutar y cuándo ejecutarlo basándose en condiciones específicas.</p>
+                
+                <div class="flowchart">
+                    <div class="flow-box">Inicio del programa</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="diamond">
+                        <div class="diamond-text">¿Condición?</div>
+                    </div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-box">Acción según condición</div>
+                    <div class="flow-arrow">↓</div>
+                    <div class="flow-box">Fin</div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">🔀</div>
+                    Tipos de Estructuras de Control
+                </div>
+                <p><strong>1. Estructuras Condicionales (if/elif/else):</strong> Ejecutan código basándose en condiciones verdaderas o falsas.</p>
+                <p><strong>2. Bucles (for y while):</strong> Repiten código múltiples veces hasta que se cumpla una condición de parada.</p>
+                <p><strong>3. Control de flujo:</strong> Alteran el comportamiento normal del programa (break, continue, pass).</p>
+            </div>
+
+            <div class="interactive-exercise">
+                <div class="exercise-title">
+                    <div class="exercise-icon">💡</div>
+                    Ejemplo Práctico: Sistema de Calificaciones
+                </div>
+                <p>Veamos un ejemplo real de cómo usamos estructuras de control en un sistema de calificaciones:</p>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Python - Sistema de Calificaciones
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># Sistema de calificaciones universitario</span>
+<span class="keyword">def</span> evaluar_estudiante():
+    <span class="comment"># Solicitar datos del estudiante</span>
+    nombre = <span class="keyword">input</span>(<span class="string">"Nombre del estudiante: "</span>)
+    nota = <span class="keyword">float</span>(<span class="keyword">input</span>(<span class="string">"Nota (0-100): "</span>))
+    
+    <span class="comment"># Estructura condicional para determinar la calificación</span>
+    <span class="keyword">if</span> nota >= <span class="number">90</span>:
+        calificacion = <span class="string">"Excelente"</span>
+        mensaje = <span class="string">"¡Felicitaciones!"</span>
+    <span class="keyword">elif</span> nota >= <span class="number">80</span>:
+        calificacion = <span class="string">"Bueno"</span>
+        mensaje = <span class="string">"Buen trabajo"</span>
+    <span class="keyword">elif</span> nota >= <span class="number">70</span>:
+        calificacion = <span class="string">"Aceptable"</span>
+        mensaje = <span class="string">"Puedes mejorar"</span>
+    <span class="keyword">elif</span> nota >= <span class="number">60</span>:
+        calificacion = <span class="string">"Suficiente"</span>
+        mensaje = <span class="string">"Aprobado por poco"</span>
+    <span class="keyword">else</span>:
+        calificacion = <span class="string">"Insuficiente"</span>
+        mensaje = <span class="string">"Necesitas estudiar más"</span>
+    
+    <span class="comment"># Mostrar resultado</span>
+    <span class="keyword">print</span>(<span class="string">f"Estudiante: {nombre}"</span>)
+    <span class="keyword">print</span>(<span class="string">f"Nota: {nota}"</span>)
+    <span class="keyword">print</span>(<span class="string">f"Calificación: {calificacion}"</span>)
+    <span class="keyword">print</span>(<span class="string">f"Mensaje: {mensaje}"</span>)
+
+<span class="comment"># Llamar a la función</span>
+evaluar_estudiante()
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: if/elif/else -->
+        <div id="if-elif-else" class="content-section">
+            <h2>🔍 Estructuras Condicionales: if, elif, else</h2>
+            
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">if</div>
+                    Sintaxis Básica
+                </div>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Sintaxis de if/elif/else
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># Estructura básica</span>
+<span class="keyword">if</span> condicion1:
+    <span class="comment"># Código a ejecutar si condicion1 es True</span>
+    accion1()
+<span class="keyword">elif</span> condicion2:
+    <span class="comment"># Código a ejecutar si condicion2 es True</span>
+    accion2()
+<span class="keyword">elif</span> condicion3:
+    <span class="comment"># Código a ejecutar si condicion3 es True</span>
+    accion3()
+<span class="keyword">else</span>:
+    <span class="comment"># Código a ejecutar si ninguna condición es True</span>
+    accion_por_defecto()
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">🎮</div>
+                    Operadores de Comparación
+                </div>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Operadores de Comparación en Python
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># Operadores de comparación</span>
+a = <span class="number">10</span>
+b = <span class="number">20</span>
+
+<span class="keyword">print</span>(a == b)    <span class="comment"># Igual a: False</span>
+<span class="keyword">print</span>(a != b)    <span class="comment"># Diferente de: True</span>
+<span class="keyword">print</span>(a < b)     <span class="comment"># Menor que: True</span>
+<span class="keyword">print</span>(a > b)     <span class="comment"># Mayor que: False</span>
+<span class="keyword">print</span>(a <= b)    <span class="comment"># Menor o igual: True</span>
+<span class="keyword">print</span>(a >= b)    <span class="comment"># Mayor o igual: False</span>
+
+<span class="comment"># Operadores lógicos</span>
+<span class="keyword">print</span>(a < b <span class="keyword">and</span> a > <span class="number">0</span>)    <span class="comment"># and: True</span>
+<span class="keyword">print</span>(a > b <span class="keyword">or</span> a > <span class="number">0</span>)     <span class="comment"># or: True</span>
+<span class="keyword">print</span>(<span class="keyword">not</span> a > b)            <span class="comment"># not: True</span>
+                </div>
+            </div>
+
+            <div class="interactive-exercise">
+                <div class="exercise-title">
+                    <div class="exercise-icon">🧪</div>
+                    Ejercicio Interactivo: Sistema de Autenticación
+                </div>
+                <p>Crea un sistema de autenticación simple que verifique usuario y contraseña:</p>
+                
+                <div class="input-group">
+                    <label for="usuario">Usuario:</label>
+                    <input type="text" id="usuario" placeholder="Ingresa tu usuario">
+                </div>
+                
+                <div class="input-group">
+                    <label for="password">Contraseña:</label>
+                    <input type="password" id="password" placeholder="Ingresa tu contraseña">
+                </div>
+                
+                <button class="btn" onclick="verificarLogin()">Iniciar Sesión</button>
+                <button class="btn btn-warning" onclick="limpiarLogin()">Limpiar</button>
+                
+                <div class="result-display" id="loginResult">
+Aquí aparecerá el resultado de la autenticación...
+                </div>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Código del Sistema de Autenticación
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># Sistema de autenticación</span>
+<span class="keyword">def</span> verificar_login(usuario, password):
+    <span class="comment"># Usuarios válidos (en un sistema real, esto estaría en una base de datos)</span>
+    usuarios_validos = {
+        <span class="string">"admin"</span>: <span class="string">"123456"</span>,
+        <span class="string">"usuario1"</span>: <span class="string">"password1"</span>,
+        <span class="string">"estudiante"</span>: <span class="string">"estudio123"</span>
+    }
+    
+    <span class="comment"># Verificar si el usuario existe y la contraseña es correcta</span>
+    <span class="keyword">if</span> usuario <span class="keyword">in</span> usuarios_validos:
+        <span class="keyword">if</span> usuarios_validos[usuario] == password:
+            <span class="keyword">return</span> <span class="string">f"✅ Bienvenido {usuario}! Login exitoso."</span>
+        <span class="keyword">else</span>:
+            <span class="keyword">return</span> <span class="string">"❌ Contraseña incorrecta."</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> <span class="string">"❌ Usuario no encontrado."</span>
+
+<span class="comment"># Ejemplo de uso</span>
+resultado = verificar_login(<span class="string">"admin"</span>, <span class="string">"123456"</span>)
+<span class="keyword">print</span>(resultado)
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: Bucle for -->
+        <div id="bucle-for" class="content-section">
+            <h2>🔄 Bucle for: Iteración Controlada</h2>
+            
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">for</div>
+                    ¿Qué es un bucle for?
+                </div>
+                <p>El bucle <strong>for</strong> se usa cuando conocemos de antemano cuántas veces queremos repetir una acción, o cuando queremos iterar sobre una secuencia (lista, tupla, string, etc.).</p>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Sintaxis básica del bucle for
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># Sintaxis básica</span>
+<span class="keyword">for</span> variable <span class="keyword">in</span> secuencia:
+    <span class="comment"># Código a repetir</span>
+    <span class="keyword">print</span>(variable)
+
+<span class="comment"># Ejemplos prácticos</span>
+
+<span class="comment"># 1. Iterar sobre una lista</span>
+frutas = [<span class="string">"manzana"</span>, <span class="string">"banana"</span>, <span class="string">"naranja"</span>]
+<span class="keyword">for</span> fruta <span class="keyword">in</span> frutas:
+    <span class="keyword">print</span>(<span class="string">f"Me gusta la {fruta}"</span>)
+
+<span class="comment"># 2. Iterar usando range()</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">5</span>):
+    <span class="keyword">print</span>(<span class="string">f"Número: {i}"</span>)
+
+<span class="comment"># 3. Iterar sobre un string</span>
+<span class="keyword">for</span> letra <span class="keyword">in</span> <span class="string">"Python"</span>:
+    <span class="keyword">print</span>(letra)
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">📊</div>
+                    La función range()
+                </div>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Usando range() de diferentes formas
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># range(stop) - desde 0 hasta stop-1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">5</span>):
+    <span class="keyword">print</span>(i)  <span class="comment"># 0, 1, 2, 3, 4</span>
+
+<span class="comment"># range(start, stop) - desde start hasta stop-1</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">2</span>, <span class="number">8</span>):
+    <span class="keyword">print</span>(i)  <span class="comment"># 2, 3, 4, 5, 6, 7</span>
+
+<span class="comment"># range(start, stop, step) - con incremento personalizado</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">0</span>, <span class="number">10</span>, <span class="number">2</span>):
+    <span class="keyword">print</span>(i)  <span class="comment"># 0, 2, 4, 6, 8</span>
+
+<span class="comment"># range con step negativo (cuenta hacia atrás)</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>, <span class="number">0</span>, <span class="number">-1</span>):
+    <span class="keyword">print</span>(i)  <span class="comment"># 10, 9, 8, 7, 6, 5, 4, 3, 2, 1</span>
+                </div>
+            </div>
+
+            <div class="interactive-exercise">
+                <div class="exercise-title">
+                    <div class="exercise-icon">🎯</div>
+                    Ejercicio: Generador de Tablas de Multiplicar
+                </div>
+                <p>Crea una tabla de multiplicar interactiva:</p>
+                
+                <div class="input-group">
+                    <label for="numeroTabla">Número para la tabla:</label>
+                    <input type="number" id="numeroTabla" value="5" min="1" max="20">
+                </div>
+                
+                <div class="input-group">
+                    <label for="rangoTabla">Hasta qué número:</label>
+                    <input type="number" id="rangoTabla" value="10" min="1" max="20">
+                </div>
+                
+                <button class="btn" onclick="generarTabla()">Generar Tabla</button>
+                <button class="btn btn-warning" onclick="limpiarTabla()">Limpiar</button>
+                
+                <div class="result-display" id="tablaResult">
+La tabla de multiplicar aparecerá aquí...
+                </div>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Código del Generador de Tablas
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># Generador de tablas de multiplicar</span>
+<span class="keyword">def</span> generar_tabla_multiplicar(numero, hasta):
+    <span class="keyword">print</span>(<span class="string">f"📊 Tabla de multiplicar del {numero}"</span>)
+    <span class="keyword">print</span>(<span class="string">"=" * 30</span>)
+    
+    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, hasta + <span class="number">1</span>):
+        resultado = numero * i
+        <span class="keyword">print</span>(<span class="string">f"{numero} × {i} = {resultado}"</span>)
+
+<span class="comment"># Ejemplo de uso</span>
+generar_tabla_multiplicar(<span class="number">7</span>, <span class="number">12</span>)
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">🎮</div>
+                    Bucles anidados
+                </div>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Ejemplo: Patrón de asteriscos
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># Bucles anidados para crear patrones</span>
+<span class="keyword">def</span> crear_triangulo(altura):
+    <span class="keyword">for</span> fila <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">1</span>, altura + <span class="number">1</span>):
+        <span class="comment"># Bucle interno para imprimir asteriscos</span>
+        <span class="keyword">for</span> columna <span class="keyword">in</span> <span class="keyword">range</span>(fila):
+            <span class="keyword">print</span>(<span class="string">"*"</span>, end=<span class="string">""</span>)
+        <span class="keyword">print</span>()  <span class="comment"># Nueva línea después de cada fila</span>
+
+<span class="comment"># Crear un triángulo de 5 filas</span>
+crear_triangulo(<span class="number">5</span>)
+<span class="comment"># Resultado:</span>
+<span class="comment"># *</span>
+<span class="comment"># **</span>
+<span class="comment"># ***</span>
+<span class="comment"># ****</span>
+<span class="comment"># *****</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: Bucle while -->
+        <div id="bucle-while" class="content-section">
+            <h2>⏰ Bucle while: Iteración Condicional</h2>
+            
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">⚡</div>
+                    ¿Qué es un bucle while?
+                </div>
+                <p>El bucle <strong>while</strong> se ejecuta mientras una condición sea verdadera. Es útil cuando no sabemos exactamente cuántas veces necesitamos repetir una acción.</p>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Sintaxis del bucle while
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># Sintaxis básica</span>
+<span class="keyword">while</span> condicion:
+    <span class="comment"># Código a repetir</span>
+    <span class="comment"># IMPORTANTE: Asegúrate de modificar la condición</span>
+    <span class="comment"># para evitar bucles infinitos</span>
+
+<span class="comment"># Ejemplo básico</span>
+contador = <span class="number">0</span>
+<span class="keyword">while</span> contador < <span class="number">5</span>:
+    <span class="keyword">print</span>(<span class="string">f"Contador: {contador}"</span>)
+    contador += <span class="number">1</span>  <span class="comment"># ¡Muy importante!</span>
+
+<span class="keyword">print</span>(<span class="string">"Bucle terminado"</span>)
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">⚠️</div>
+                    Control de flujo: break y continue
+                </div>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Usando break y continue
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># break: Sale completamente del bucle</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>):
+    <span class="keyword">if</span> i == <span class="number">5</span>:
+        <span class="keyword">break</span>  <span class="comment"># Sale del bucle cuando i es 5</span>
+    <span class="keyword">print</span>(i)  <span class="comment"># Imprime: 0, 1, 2, 3, 4</span>
+
+<span class="keyword">print</span>(<span class="string">"Bucle terminado con break"</span>)
+
+<span class="comment"># continue: Salta a la siguiente iteración</span>
+<span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">10</span>):
+    <span class="keyword">if</span> i % <span class="number">2</span> == <span class="number">0</span>:
+        <span class="keyword">continue</span>  <span class="comment"># Salta los números pares</span>
+    <span class="keyword">print</span>(i)  <span class="comment"># Imprime solo números impares: 1, 3, 5, 7, 9</span>
+
+<span class="comment"># Ejemplo con while</span>
+numero = <span class="number">0</span>
+<span class="keyword">while</span> <span class="keyword">True</span>:  <span class="comment"># Bucle infinito controlado</span>
+    numero += <span class="number">1</span>
+    <span class="keyword">if</span> numero > <span class="number">100</span>:
+        <span class="keyword">break</span>  <span class="comment"># Condición de salida</span>
+    <span class="keyword">if</span> numero % <span class="number">10</span> != <span class="number">0</span>:
+        <span class="keyword">continue</span>  <span class="comment"># Solo procesa múltiplos de 10</span>
+    <span class="keyword">print</span>(<span class="string">f"Múltiplo de 10: {numero}"</span>)
+                </div>
+            </div>
+
+            <div class="interactive-exercise">
+                <div class="exercise-title">
+                    <div class="exercise-icon">🎲</div>
+                    Ejercicio: Juego de Adivinanza
+                </div>
+                <p>Crea un juego donde el usuario debe adivinar un número:</p>
+                
+                <div class="input-group">
+                    <label for="numeroMin">Número mínimo:</label>
+                    <input type="number" id="numeroMin" value="1" min="1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="numeroMax">Número máximo:</label>
+                    <input type="number" id="numeroMax" value="10" min="2">
+                </div>
+                
+                <button class="btn" onclick="iniciarJuego()">Iniciar Juego</button>
+                <button class="btn btn-warning" onclick="reiniciarJuego()">Reiniciar</button>
+                
+                <div id="juegoContainer" style="display: none;">
+                    <div class="input-group">
+                        <label for="intentoUsuario">Tu número:</label>
+                        <input type="number" id="intentoUsuario" placeholder="Escribe tu número aquí">
+                    </div>
+                    <button class="btn btn-success" onclick="verificarIntento()">Adivinar</button>
+                </div>
+                
+                <div class="result-display" id="juegoResult">
+Configura el rango y presiona "Iniciar Juego"...
+                </div>
+                
+                <div class="code-example">
+                    <div class="code-header">
+                        Código del Juego de Adivinanza
+                        <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                    </div>
+<span class="comment"># Juego de adivinanza usando while</span>
+<span class="keyword">import</span> random
+
+<span class="keyword">def</span> juego_adivinanza():
+    <span class="comment"># Configuración del juego</span>
+    numero_secreto = random.randint(<span class="number">1</span>, <span class="number">100</span>)
+    intentos = <span class="number">0</span>
+    max_intentos = <span class="number">7</span>
+    
+    <span class="keyword">print</span>(<span class="string">"🎲 ¡Bienvenido al juego de adivinanza!"</span>)
+    <span class="keyword">print</span>(<span class="string">f"Adivina el número entre 1 y 100"</span>)
+    <span class="keyword">print</span>(<span class="string">f"Tienes {max_intentos} intentos"</span>)
+    
+    <span class="keyword">while</span> intentos < max_intentos:
+        <span class="keyword">try</span>:
+            <span class="comment"># Solicitar número al usuario</span>
+            numero_usuario = <span class="keyword">int</span>(<span class="keyword">input</span>(<span class="string">"Ingresa tu número: "</span>))
+            intentos += <span class="number">1</span>
+            
+            <span class="comment"># Verificar el número</span>
+            <span class="keyword">if</span> numero_usuario == numero_secreto:
+                <span class="keyword">print</span>(<span class="string">f"🎉 ¡Felicitaciones! Adivinaste en {intentos} intentos"</span>)
+                <span class="keyword">break</span>
+            <span class="keyword">elif</span> numero_usuario < numero_secreto:
+                <span class="keyword">print</span>(<span class="string">f"📈 El número es mayor que {numero_usuario}"</span>)
+            <span class="keyword">else</span>:
+                <span class="keyword">print</span>(<span class="string">f"📉 El número es menor que {numero_usuario}"</span>)
+            
+            <span class="comment"># Mostrar intentos restantes</span>
+            restantes = max_intentos - intentos
+            <span class="keyword">if</span> restantes > <span class="number">0</span>:
+                <span class="keyword">print</span>(<span class="string">f"Te quedan {restantes} intentos"</span>)
+            
+        <span class="keyword">except</span> ValueError:
+            <span class="keyword">print</span>(<span class="string">"❌ Por favor, ingresa un número válido"</span>)
+    
+    <span class="keyword">else</span>:
+        <span class="comment"># Se ejecuta si el while termina sin break</span>
+        <span class="keyword">print</span>(<span class="string">f"😞 Se acabaron los intentos. El número era {numero_secreto}"</span>)
+
+<span class="comment"># Ejecutar el juego</span>
+juego_adivinanza()
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: Ejercicios -->
+        <div id="ejercicios" class="content-section">
+            <h2>💪 Ejercicios Prácticos</h2>
+            
+            <div class="interactive-exercise">
+                <div class="exercise-title">
+                    <div class="exercise-icon">📝</div>
+                    Ejercicio 1: Calculadora de Promedio
+                </div>
+                <p>Crea una calculadora que permita ingresar calificaciones y calcule el promedio:</p>
+                
+                <div class="input-group">
+                    <label for="cantidadNotas">Cantidad de notas:</label>
+                    <input type="number" id="cantidadNotas" value="3" min="1" max="10">
+                </div>
+                
+                <div id="notasInputs"></div>
+                
+                <button class="btn" onclick="generarInputsNotas()">Generar Campos</button>
+                <button class="btn btn-success" onclick="calcularPromedio()">Calcular Promedio</button>
+                
+                <div class="result-display" id="promedioResult">
+El resultado del promedio aparecerá aquí...
+                </div>
+            </div>
+
+            <div class="interactive-exercise">
+                <div class="exercise-title">
+                    <div class="exercise-icon">🔢</div>
+                    Ejercicio 2: Contador de Números Pares e Impares
+                </div>
+                <p>Analiza una secuencia de números y cuenta cuántos son pares e impares:</p>
+                
+                <div class="input-group">
+                    <label for="rangoInicio">Desde:</label>
+                    <input type="number" id="rangoInicio" value="1">
+                </div>
+                
+                <div class="input-group">
+                    <label for="rangoFin">Hasta:</label>
+                    <input type="number" id="rangoFin" value="20">
+                </div>
+                
+                <button class="btn" onclick="contarParesImpares()">Analizar Rango</button>
+                
+                <div class="result-display" id="paresImparesResult">
+El análisis aparecerá aquí...
+                </div>
+            </div>
+
+            <div class="interactive-exercise">
+                <div class="exercise-title">
+                    <div class="exercise-icon">🏆</div>
+                    Ejercicio 3: Sistema de Menú Interactivo
+                </div>
+                <p>Simula un menú de restaurante con diferentes opciones:</p>
+                
+                <div class="input-group">
+                    <label for="menuOpcion">Selecciona una opción:</label>
+                    <select id="menuOpcion">
+                        <option value="1">Ver Menú</option>
+                        <option value="2">Hacer Pedido</option>
+                        <option value="3">Ver Total</option>
+                        <option value="4">Finalizar</option>
+                    </select>
+                </div>
+                
+                <button class="btn" onclick="procesarMenu()">Ejecutar Opción</button>
+                <button class="btn btn-warning" onclick="reiniciarMenu()">Reiniciar Pedido</button>
+                
+                <div class="result-display" id="menuResult">
+Selecciona una opción del menú...
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección: Evaluación -->
+        <div id="evaluacion" class="content-section">
+            <h2>📋 Evaluación del Módulo</h2>
+            
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    1. ¿Cuál es la principal diferencia entre un bucle 'for' y un bucle 'while'?
+                </div>
+                <ul class="quiz-options" data-question="1">
+                    <li data-answer="a">for se usa para bucles infinitos, while para bucles finitos</li>
+                    <li data-answer="b" data-correct="true">for se usa cuando conocemos el número de iteraciones, while cuando dependemos de una condición</li>
+                    <li data-answer="c">No hay diferencia, son sinónimos</li>
+                    <li data-answer="d">while es más rápido que for</li>
+                </ul>
+                <div class="feedback" id="feedback1" style="display: none;"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    2. ¿Qué hace la instrucción 'break' en un bucle?
+                </div>
+                <ul class="quiz-options" data-question="2">
+                    <li data-answer="a">Pausa el bucle temporalmente</li>
+                    <li data-answer="b" data-correct="true">Sale completamente del bucle</li>
+                    <li data-answer="c">Salta a la siguiente iteración</li>
+                    <li data-answer="d">Reinicia el bucle desde el principio</li>
+                </ul>
+                <div class="feedback" id="feedback2" style="display: none;"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    3. ¿Cuál de estos códigos imprime los números del 0 al 4?
+                </div>
+                <ul class="quiz-options" data-question="3">
+                    <li data-answer="a">for i in range(5): print(i)</li>
+                    <li data-answer="b">for i in range(1, 5): print(i)</li>
+                    <li data-answer="c">for i in range(0, 5, 2): print(i)</li>
+                    <li data-answer="d" data-correct="true">Tanto la opción a es correcta</li>
+                </ul>
+                <div class="feedback" id="feedback3" style="display: none;"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    4. ¿Qué estructura de control usarías para validar la entrada de un usuario hasta que sea correcta?
+                </div>
+                <ul class="quiz-options" data-question="4">
+                    <li data-answer="a">if/else</li>
+                    <li data-answer="b">for</li>
+                    <li data-answer="c" data-correct="true">while</li>
+                    <li data-answer="d">elif</li>
+                </ul>
+                <div class="feedback" id="feedback4" style="display: none;"></div>
+            </div>
+
+            <div class="quiz-container">
+                <div class="quiz-question">
+                    5. En Python, ¿cuál es el resultado de la expresión: 5 > 3 and 2 < 1?
+                </div>
+                <ul class="quiz-options" data-question="5">
+                    <li data-answer="a">True</li>
+                    <li data-answer="b" data-correct="true">False</li>
+                    <li data-answer="c">Error</li>
+                    <li data-answer="d">None</li>
+                </ul>
+                <div class="feedback" id="feedback5" style="display: none;"></div>
+            </div>
+
+            <button class="btn btn-success" onclick="evaluarQuiz()">Evaluar Quiz</button>
+            <button class="btn btn-warning" onclick="reiniciarQuiz()">Reiniciar Quiz</button>
+            
+            <div class="result-display" id="quizResult" style="display: none;">
+            </div>
+        </div>
+
+        <!-- Sección: Resumen -->
+        <div id="resumen" class="content-section">
+            <h2>📊 Resumen del Módulo</h2>
+            
+            <div class="summary-stats">
+                <div class="stat-card">
+                    <span class="stat-number">3</span>
+                    <div class="stat-label">Estructuras de Control</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">5</span>
+                    <div class="stat-label">Ejercicios Prácticos</div>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <div class="stat-label">Interactividad</div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">✅</div>
+                    Lo que has aprendido
+                </div>
+                <p><strong>1. Estructuras Condicionales (if/elif/else):</strong> Para tomar decisiones basadas en condiciones.</p>
+                <p><strong>2. Bucle for:</strong> Para iteraciones cuando conoces el número de repeticiones o trabajas con secuencias.</p>
+                <p><strong>3. Bucle while:</strong> Para iteraciones basadas en condiciones, útil para validaciones y procesos indefinidos.</p>
+                <p><strong>4. Control de flujo:</strong> break, continue y pass para controlar el comportamiento de los bucles.</p>
+                <p><strong>5. Aplicaciones prácticas:</strong> Sistemas de autenticación, calculadoras, juegos y menús interactivos.</p>
+            </div>
+
+            <div class="concept-card">
+                <div class="concept-title">
+                    <div class="concept-icon">🎯</div>
+                    Consejos importantes
+                </div>
+                <p><strong>• Evita bucles infinitos:</strong> Siempre asegúrate de que la condición del while pueda volverse False.</p>
+                <p><strong>• Usa for para secuencias:</strong> Cuando trabajas con listas, strings o rangos conocidos.</p>
+                <p><strong>• Usa while para condiciones:</strong> Cuando no sabes cuántas iteraciones necesitas.</p>
+                <p><strong>• Indentación correcta:</strong> Python usa la indentación para determinar el alcance del código.</p>
+                <p><strong>• Operadores lógicos:</strong> and, or, not te ayudan a crear condiciones más complejas.</p>
+            </div>
+
+            <div class="code-example">
+                <div class="code-header">
+                    Proyecto Integrador: Sistema de Gestión de Estudiantes
+                    <button class="copy-btn" onclick="copyCode(this)">Copiar</button>
+                </div>
+<span class="comment"># Sistema integrador que usa todas las estructuras de control</span>
+<span class="keyword">class</span> SistemaEstudiantes:
+    <span class="keyword">def</span> __init__(self):
+        self.estudiantes = []
+    
+    <span class="keyword">def</span> menu_principal(self):
+        <span class="keyword">while</span> <span class="keyword">True</span>:
+            <span class="keyword">print</span>(<span class="string">"\n🎓 Sistema de Gestión de Estudiantes"</span>)
+            <span class="keyword">print</span>(<span class="string">"1. Agregar estudiante"</span>)
+            <span class="keyword">print</span>(<span class="string">"2. Ver todos los estudiantes"</span>)
+            <span class="keyword">print</span>(<span class="string">"3. Buscar estudiante"</span>)
+            <span class="keyword">print</span>(<span class="string">"4. Calcular promedio general"</span>)
+            <span class="keyword">print</span>(<span class="string">"5. Salir"</span>)
+            
+            opcion = <span class="keyword">input</span>(<span class="string">"Selecciona una opción: "</span>)
+            
+            <span class="keyword">if</span> opcion == <span class="string">"1"</span>:
+                self.agregar_estudiante()
+            <span class="keyword">elif</span> opcion == <span class="string">"2"</span>:
+                self.ver_estudiantes()
+            <span class="keyword">elif</span> opcion == <span class="string">"3"</span>:
+                self.buscar_estudiante()
+            <span class="keyword">elif</span> opcion == <span class="string">"4"</span>:
+                self.promedio_general()
+            <span class="keyword">elif</span> opcion == <span class="string">"5"</span>:
+                <span class="keyword">print</span>(<span class="string">"¡Hasta luego!"</span>)
+                <span class="keyword">break</span>
+            <span class="keyword">else</span>:
+                <span class="keyword">print</span>(<span class="string">"❌ Opción no válida"</span>)
+    
+    <span class="keyword">def</span> agregar_estudiante(self):
+        nombre = <span class="keyword">input</span>(<span class="string">"Nombre del estudiante: "</span>)
+        
+        <span class="comment"># Validar y obtener calificaciones</span>
+        calificaciones = []
+        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="keyword">range</span>(<span class="number">3</span>):
+            <span class="keyword">while</span> <span class="keyword">True</span>:
+                <span class="keyword">try</span>:
+                    nota = <span class="keyword">float</span>(<span class="keyword">input</span>(<span class="string">f"Calificación {i+1} (0-100): "</span>))
+                    <span class="keyword">if</span> <span class="number">0</span> <= nota <= <span class="number">100</span>:
+                        calificaciones.append(nota)
+                        <span class="keyword">break</span>
+                    <span class="keyword">else</span>:
+                        <span class="keyword">print</span>(<span class="string">"La nota debe estar entre 0 y 100"</span>)
+                <span class="keyword">except</span> ValueError:
+                    <span class="keyword">print</span>(<span class="string">"Ingresa un número válido"</span>)
+        
+        estudiante = {
+            <span class="string">"nombre"</span>: nombre,
+            <span class="string">"calificaciones"</span>: calificaciones,
+            <span class="string">"promedio"</span>: sum(calificaciones) / len(calificaciones)
+        }
+        
+        self.estudiantes.append(estudiante)
+        <span class="keyword">print</span>(<span class="string">f"✅ Estudiante {nombre} agregado exitosamente"</span>)
+
+<span class="comment"># Usar el sistema</span>
+sistema = SistemaEstudiantes()
+sistema.menu_principal()
+            </div>
+
+            <div class="interactive-exercise">
+                <div class="exercise-title">
+                    <div class="exercise-icon">🚀</div>
+                    Proyecto Final: Tu Propio Sistema
+                </div>
+                <p>Aplica todo lo aprendido creando tu propio sistema:</p>
+                
+                <div class="input-group">
+                    <label for="proyectoTipo">Tipo de proyecto:</label>
+                    <select id="proyectoTipo">
+                        <option value="calculadora">Calculadora Avanzada</option>
+                        <option value="inventario">Sistema de Inventario</option>
+                        <option value="quiz">Quiz Interactivo</option>
+                        <option value="agenda">Agenda Personal</option>
+                    </select>
+                </div>
+                
+                <button class="btn" onclick="generarProyecto()">Generar Plantilla</button>
+                
+                <div class="result-display" id="proyectoResult">
+Selecciona un tipo de proyecto para generar la plantilla...
+                </div>
+            </div>
+        </div>
+
+        <!-- Navegación -->
+        <div class="navigation">
+            <button class="btn" onclick="anteriorModulo()">← Módulo 3: Variables y Tipos de Datos</button>
+            <div>
+                <span id="progreso-texto">Progreso: 50%</span>
+            </div>
+            <button class="btn" onclick="siguienteModulo()">Módulo 5: Funciones →</button>
+        </div>
+    </div>
+    <script src="js/mod4.js"></script>
+</body>
+</html>
