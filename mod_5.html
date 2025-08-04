@@ -1,0 +1,631 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Módulo 5: Funciones y Procedimientos - Fundamentos de Programación</title>
+    <link rel="stylesheet" href="css/mod5.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🐍 Módulo 5: Funciones y Procedimientos</h1>
+            <p>Crear código reutilizable con funciones, parámetros, valores de retorno y mejores prácticas</p>
+            <div class="progress-bar">
+                <div class="progress-fill" id="progressBar"></div>
+            </div>
+        </div>
+        <div class="navigation">
+            <button class="nav-btn active" onclick="showSection('intro')">Introducción</button>
+            <button class="nav-btn" onclick="showSection('conceptos')">Conceptos</button>
+            <button class="nav-btn" onclick="showSection('sintaxis')">Sintaxis</button>
+            <button class="nav-btn" onclick="showSection('ejemplos')">Ejemplos</button>
+            <button class="nav-btn" onclick="showSection('ejercicios')">Ejercicios</button>
+            <button class="nav-btn" onclick="showSection('buenasPracticas')">Mejores Prácticas</button>
+            <button class="nav-btn" onclick="showSection('evaluacion')">Evaluación</button>
+        </div>
+
+        <!-- Sección de Introducción -->
+        <div id="intro" class="section active">
+            <h2>🎯 ¿Qué son las Funciones?</h2>
+            
+            <div class="concept-card">
+                <h3>Definición</h3>
+                <p>Una <strong>función</strong> es un bloque de código reutilizable que realiza una tarea específica. Es como una "máquina" que recibe datos (parámetros), los procesa y puede devolver un resultado.</p>
+            </div>
+
+            <div class="visual-diagram">
+                <h3>🔄 Flujo de una Función</h3>
+                <div class="function-flow">
+                    <div class="flow-step">Entrada<br>(Parámetros)</div>
+                    <div class="arrow">→</div>
+                    <div class="flow-step">Procesamiento<br>(Código)</div>
+                    <div class="arrow">→</div>
+                    <div class="flow-step">Salida<br>(Resultado)</div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>¿Por qué usar funciones?</h3>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>Reutilización:</strong> Escribir código una vez, usarlo muchas veces</li>
+                    <li><strong>Organización:</strong> Dividir problemas complejos en partes simples</li>
+                    <li><strong>Mantenimiento:</strong> Más fácil encontrar y corregir errores</li>
+                    <li><strong>Legibilidad:</strong> Código más claro y comprensible</li>
+                </ul>
+            </div>
+
+            <div class="interactive-exercise">
+                <h3>🤔 Reflexiona</h3>
+                <p>Piensa en tu día a día: ¿qué actividades repites constantemente? Por ejemplo: preparar café, revisar el celular, etc. Las funciones en programación funcionan igual: automatizan tareas repetitivas.</p>
+            </div>
+        </div>
+
+        <!-- Sección de Conceptos -->
+        <div id="conceptos" class="section">
+            <h2>📚 Conceptos Fundamentales</h2>
+
+            <div class="example-grid">
+                <div class="example-card">
+                    <h3>🔧 Función (Function)</h3>
+                    <p>Bloque de código que puede devolver un valor usando <code>return</code></p>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">calcular_area</span>(base, altura):
+    <span class="keyword">return</span> base * altura / <span class="number">2</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>⚙️ Procedimiento</h3>
+                    <p>Bloque de código que ejecuta acciones pero no devuelve valor</p>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">saludar</span>(nombre):
+    <span class="keyword">print</span>(<span class="string">f"¡Hola, {nombre}!"</span>)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>📥 Parámetros</h3>
+                    <p>Variables que recibe la función para trabajar con ellas</p>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">sumar</span>(a, b):  <span class="comment"># a y b son parámetros</span>
+    <span class="keyword">return</span> a + b
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>📤 Argumentos</h3>
+                    <p>Valores reales que se pasan a la función al llamarla</p>
+                    <div class="code-container">
+                        <div class="code">
+resultado = <span class="function">sumar</span>(<span class="number">5</span>, <span class="number">3</span>)  <span class="comment"># 5 y 3 son argumentos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tips">
+                <div class="tips-title">💡 Diferencia Clave</div>
+                <p><strong>Parámetros:</strong> Son las "variables" en la definición de la función</p>
+                <p><strong>Argumentos:</strong> Son los "valores reales" que pasas cuando llamas la función</p>
+            </div>
+        </div>
+
+        <!-- Sección de Sintaxis -->
+        <div id="sintaxis" class="section">
+            <h2>📝 Sintaxis de Funciones en Python</h2>
+
+            <div class="concept-card">
+                <h3>Estructura Básica</h3>
+                <div class="code-container">
+                    <div class="code">
+<span class="keyword">def</span> <span class="function">nombre_funcion</span>(parametro1, parametro2):
+    <span class="string">"""Documentación de la función"""</span>
+    <span class="comment"># Código de la función</span>
+    <span class="keyword">return</span> resultado  <span class="comment"># Opcional</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="example-grid">
+                <div class="example-card">
+                    <h3>Sin Parámetros</h3>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">obtener_fecha_actual</span>():
+    <span class="keyword">from</span> datetime <span class="keyword">import</span> date
+    <span class="keyword">return</span> date.today()
+
+<span class="comment"># Llamada</span>
+fecha = <span class="function">obtener_fecha_actual</span>()
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Con Parámetros</h3>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">presentar_persona</span>(nombre, edad):
+    <span class="keyword">return</span> <span class="string">f"Soy {nombre} y tengo {edad} años"</span>
+
+<span class="comment"># Llamada</span>
+mensaje = <span class="function">presentar_persona</span>(<span class="string">"Ana"</span>, <span class="number">25</span>)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Con Valores Por Defecto</h3>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">crear_perfil</span>(nombre, edad=<span class="number">18</span>, ciudad=<span class="string">"No especificada"</span>):
+    <span class="keyword">return</span> {
+        <span class="string">"nombre"</span>: nombre,
+        <span class="string">"edad"</span>: edad,
+        <span class="string">"ciudad"</span>: ciudad
+    }
+
+<span class="comment"># Llamadas</span>
+perfil1 = <span class="function">crear_perfil</span>(<span class="string">"Carlos"</span>)
+perfil2 = <span class="function">crear_perfil</span>(<span class="string">"María"</span>, <span class="number">30</span>, <span class="string">"Bogotá"</span>)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>Con Argumentos Variables</h3>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">sumar_varios</span>(*numeros):
+    <span class="keyword">return</span> <span class="function">sum</span>(numeros)
+
+<span class="comment"># Llamadas</span>
+resultado1 = <span class="function">sumar_varios</span>(<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>)
+resultado2 = <span class="function">sumar_varios</span>(<span class="number">10</span>, <span class="number">20</span>, <span class="number">30</span>, <span class="number">40</span>)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-exercise">
+                <h3>🔧 Probador de Sintaxis</h3>
+                <p>Escribe una función simple y ve cómo funciona:</p>
+                <textarea class="exercise-input" id="syntaxCode" placeholder="def mi_funcion():&#10;    return 'Hola Mundo'">def mi_funcion():
+    return "Hola Mundo"</textarea>
+                <button class="btn" onclick="testSyntax()">🚀 Probar Función</button>
+                <div class="output" id="syntaxOutput">El resultado aparecerá aquí...</div>
+            </div>
+        </div>
+
+        <!-- Sección de Ejemplos -->
+        <div id="ejemplos" class="section">
+            <h2>💻 Ejemplos Prácticos</h2>
+
+            <div class="example-card">
+                <h3>🧮 Calculadora de Estadísticas</h3>
+                <div class="code-container">
+                    <div class="code">
+<span class="keyword">def</span> <span class="function">calcular_estadisticas</span>(numeros):
+    <span class="string">"""Calcula promedio, mayor y menor de una lista"""</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> numeros:
+        <span class="keyword">return</span> <span class="keyword">None</span>
+    
+    promedio = <span class="function">sum</span>(numeros) / <span class="function">len</span>(numeros)
+    mayor = <span class="function">max</span>(numeros)
+    menor = <span class="function">min</span>(numeros)
+    
+    <span class="keyword">return</span> {
+        <span class="string">'promedio'</span>: promedio,
+        <span class="string">'mayor'</span>: mayor,
+        <span class="string">'menor'</span>: menor
+    }
+
+<span class="comment"># Ejemplo de uso</span>
+calificaciones = [<span class="number">85</span>, <span class="number">92</span>, <span class="number">78</span>, <span class="number">96</span>, <span class="number">88</span>]
+estadisticas = <span class="function">calcular_estadisticas</span>(calificaciones)
+<span class="keyword">print</span>(<span class="string">f"Promedio: {estadisticas['promedio']:.2f}"</span>)
+                    </div>
+                </div>
+                <button class="btn" onclick="runExample('estadisticas')">▶️ Ejecutar</button>
+                <div class="output" id="output-estadisticas"></div>
+            </div>
+
+            <div class="example-card">
+                <h3>🏦 Sistema de Descuentos</h3>
+                <div class="code-container">
+                    <div class="code">
+<span class="keyword">def</span> <span class="function">calcular_descuento</span>(precio, categoria_cliente=<span class="string">"regular"</span>):
+    <span class="string">"""Calcula descuento según categoría del cliente"""</span>
+    descuentos = {
+        <span class="string">"estudiante"</span>: <span class="number">0.15</span>,  <span class="comment"># 15%</span>
+        <span class="string">"senior"</span>: <span class="number">0.20</span>,      <span class="comment"># 20%</span>
+        <span class="string">"vip"</span>: <span class="number">0.25</span>,        <span class="comment"># 25%</span>
+        <span class="string">"regular"</span>: <span class="number">0.05</span>     <span class="comment"># 5%</span>
+    }
+    
+    descuento = descuentos.get(categoria_cliente, <span class="number">0</span>)
+    precio_final = precio * (<span class="number">1</span> - descuento)
+    ahorro = precio * descuento
+    
+    <span class="keyword">return</span> {
+        <span class="string">"precio_original"</span>: precio,
+        <span class="string">"descuento_aplicado"</span>: descuento * <span class="number">100</span>,
+        <span class="string">"ahorro"</span>: ahorro,
+        <span class="string">"precio_final"</span>: precio_final
+    }
+
+<span class="comment"># Ejemplos</span>
+compra1 = <span class="function">calcular_descuento</span>(<span class="number">100</span>, <span class="string">"estudiante"</span>)
+compra2 = <span class="function">calcular_descuento</span>(<span class="number">200</span>)  <span class="comment"># categoria regular por defecto</span>
+                    </div>
+                </div>
+                <button class="btn" onclick="runExample('descuentos')">▶️ Ejecutar</button>
+                <div class="output" id="output-descuentos"></div>
+            </div>
+
+            <div class="example-card">
+                <h3>📧 Validador de Email</h3>
+                <div class="code-container">
+                    <div class="code">
+<span class="keyword">def</span> <span class="function">validar_email</span>(email):
+    <span class="string">"""Valida formato básico de email"""</span>
+    <span class="keyword">import</span> re
+    
+    <span class="comment"># Patrón básico para email</span>
+    patron = <span class="string">r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$'</span>
+    
+    <span class="keyword">if</span> re.match(patron, email):
+        <span class="keyword">return</span> {
+            <span class="string">"valido"</span>: <span class="keyword">True</span>,
+            <span class="string">"mensaje"</span>: <span class="string">"Email válido"</span>,
+            <span class="string">"dominio"</span>: email.split(<span class="string">"@"</span>)[<span class="number">1</span>]
+        }
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> {
+            <span class="string">"valido"</span>: <span class="keyword">False</span>,
+            <span class="string">"mensaje"</span>: <span class="string">"Formato de email inválido"</span>,
+            <span class="string">"dominio"</span>: <span class="keyword">None</span>
+        }
+
+<span class="comment"># Pruebas</span>
+emails = [<span class="string">"usuario@gmail.com"</span>, <span class="string">"invalid-email"</span>, <span class="string">"test@universidad.edu.co"</span>]
+<span class="keyword">for</span> email <span class="keyword">in</span> emails:
+    resultado = <span class="function">validar_email</span>(email)
+    <span class="keyword">print</span>(<span class="string">f"{email}: {resultado['mensaje']}"</span>)
+                    </div>
+                </div>
+                <button class="btn" onclick="runExample('email')">▶️ Ejecutar</button>
+                <div class="output" id="output-email"></div>
+            </div>
+
+            <div class="interactive-exercise">
+                <h3>🎯 Crea tu Propia Función</h3>
+                <p>Intenta crear una función que calcule el área de diferentes figuras geométricas:</p>
+                <textarea class="exercise-input" id="userFunction" placeholder="def calcular_area_circulo(radio):&#10;    # Tu código aquí&#10;    pass">def calcular_area_circulo(radio):
+    # Tu código aquí
+    pass</textarea>
+                <button class="btn" onclick="testUserFunction()">🧪 Probar mi Función</button>
+                <div class="output" id="userFunctionOutput">Escribe tu función y haz clic en probar...</div>
+            </div>
+        </div>
+
+        <!-- Sección de Ejercicios -->
+        <div id="ejercicios" class="section">
+            <h2>🏋️‍♂️ Ejercicios Prácticos</h2>
+
+            <div class="interactive-exercise">
+                <h3>Ejercicio 1: Convertidor de Temperatura</h3>
+                <p>Crea una función que convierta entre Celsius y Fahrenheit:</p>
+                <textarea class="exercise-input" id="exercise1" placeholder="def convertir_temperatura(valor, desde, hacia):&#10;    # Completa esta función">def convertir_temperatura(valor, desde, hacia):
+    # Completa esta función
+    # desde y hacia pueden ser 'C' o 'F'
+    pass</textarea>
+                <button class="btn" onclick="checkExercise(1)">✅ Verificar</button>
+                <button class="btn btn-secondary" onclick="showSolution(1)">💡 Ver Solución</button>
+                <div class="output" id="exercise1-output">Tu solución aparecerá aquí...</div>
+                <div id="solution1" class="feedback" style="display: none;">
+                    <strong>Solución:</strong>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">convertir_temperatura</span>(valor, desde, hacia):
+    <span class="keyword">if</span> desde == hacia:
+        <span class="keyword">return</span> valor
+    
+    <span class="keyword">if</span> desde == <span class="string">'C'</span> <span class="keyword">and</span> hacia == <span class="string">'F'</span>:
+        <span class="keyword">return</span> (valor * <span class="number">9/5</span>) + <span class="number">32</span>
+    <span class="keyword">elif</span> desde == <span class="string">'F'</span> <span class="keyword">and</span> hacia == <span class="string">'C'</span>:
+        <span class="keyword">return</span> (valor - <span class="number">32</span>) * <span class="number">5/9</span>
+    <span class="keyword">else</span>:
+        <span class="keyword">return</span> <span class="string">"Unidades no válidas. Use 'C' o 'F'"</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-exercise">
+                <h3>Ejercicio 2: Calculadora de IMC</h3>
+                <p>Crea una función que calcule el Índice de Masa Corporal y determine la categoría:</p>
+                <textarea class="exercise-input" id="exercise2" placeholder="def calcular_imc(peso, altura):&#10;    # peso en kg, altura en metros">def calcular_imc(peso, altura):
+    # peso en kg, altura en metros
+    # Retorna un diccionario con IMC y categoría
+    pass</textarea>
+                <button class="btn" onclick="checkExercise(2)">✅ Verificar</button>
+                <button class="btn btn-secondary" onclick="showSolution(2)">💡 Ver Solución</button>
+                <div class="output" id="exercise2-output">Tu solución aparecerá aquí...</div>
+                <div id="solution2" class="feedback" style="display: none;">
+                    <strong>Solución:</strong>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">calcular_imc</span>(peso, altura):
+    imc = peso / (altura ** <span class="number">2</span>)
+    
+    <span class="keyword">if</span> imc < <span class="number">18.5</span>:
+        categoria = <span class="string">"Bajo peso"</span>
+    <span class="keyword">elif</span> imc < <span class="number">25</span>:
+        categoria = <span class="string">"Peso normal"</span>
+    <span class="keyword">elif</span> imc < <span class="number">30</span>:
+        categoria = <span class="string">"Sobrepeso"</span>
+    <span class="keyword">else</span>:
+        categoria = <span class="string">"Obesidad"</span>
+    
+    <span class="keyword">return</span> {
+        <span class="string">"imc"</span>: <span class="function">round</span>(imc, <span class="number">2</span>),
+        <span class="string">"categoria"</span>: categoria
+    }
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="interactive-exercise">
+                <h3>Ejercicio 3: Generador de Contraseñas</h3>
+                <p>Crea una función que genere contraseñas seguras:</p>
+                <textarea class="exercise-input" id="exercise3" placeholder="def generar_contraseña(longitud=8, incluir_simbolos=True):&#10;    # Genera una contraseña aleatoria">def generar_contraseña(longitud=8, incluir_simbolos=True):
+    # Genera una contraseña aleatoria
+    # longitud: número de caracteres
+    # incluir_simbolos: True/False
+    pass</textarea>
+                <button class="btn" onclick="checkExercise(3)">✅ Verificar</button>
+                <button class="btn btn-secondary" onclick="showSolution(3)">💡 Ver Solución</button>
+                <div class="output" id="exercise3-output">Tu solución aparecerá aquí...</div>
+                <div id="solution3" class="feedback" style="display: none;">
+                    <strong>Solución:</strong>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">generar_contraseña</span>(longitud=<span class="number">8</span>, incluir_simbolos=<span class="keyword">True</span>):
+    <span class="keyword">import</span> random
+    <span class="keyword">import</span> string
+    
+    caracteres = string.ascii_letters + string.digits
+    <span class="keyword">if</span> incluir_simbolos:
+        caracteres += <span class="string">"!@#$%^&*"</span>
+    
+    contraseña = <span class="string">''</span>.join(random.choice(caracteres) <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="function">range</span>(longitud))
+    <span class="keyword">return</span> contraseña
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="quiz-container">
+                <h3>🧠 Mini Quiz: Conceptos de Funciones</h3>
+                <div id="quiz">
+                    <div class="quiz-question">¿Cuál es la diferencia entre parámetros y argumentos?</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, false)">A) No hay diferencia, son sinónimos</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, true)">B) Parámetros están en la definición, argumentos en la llamada</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, false)">C) Argumentos están en la definición, parámetros en la llamada</div>
+                    <div class="quiz-option" onclick="selectQuizOption(this, false)">D) Solo se usan en funciones complejas</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sección de Mejores Prácticas -->
+        <div id="buenasPracticas" class="section">
+            <h2>🌟 Mejores Prácticas</h2>
+
+            <div class="example-grid">
+                <div class="example-card">
+                    <h3>📝 Nombres Descriptivos</h3>
+                    <div class="code-container">
+                        <div class="code">
+<span class="comment"># ❌ Malo</span>
+<span class="keyword">def</span> <span class="function">calc</span>(x, y):
+    <span class="keyword">return</span> x * y
+
+<span class="comment"># ✅ Bueno</span>
+<span class="keyword">def</span> <span class="function">calcular_area_rectangulo</span>(base, altura):
+    <span class="keyword">return</span> base * altura
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>📚 Documentación Clara</h3>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">calcular_interes_compuesto</span>(capital, tasa, años):
+    <span class="string">"""
+    Calcula el interés compuesto.
+    
+    Args:
+        capital (float): Monto inicial
+        tasa (float): Tasa de interés anual (0.05 = 5%)
+        años (int): Número de años
+    
+    Returns:
+        float: Monto final con interés compuesto
+    """</span>
+    <span class="keyword">return</span> capital * ((<span class="number">1</span> + tasa) ** años)
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>🛡️ Validación de Datos</h3>
+                    <div class="code-container">
+                        <div class="code">
+<span class="keyword">def</span> <span class="function">dividir</span>(a, b):
+    <span class="string">"""División segura con validación"""</span>
+    <span class="keyword">if</span> <span class="keyword">not</span> <span class="function">isinstance</span>(a, (int, float)) <span class="keyword">or</span> <span class="keyword">not</span> <span class="function">isinstance</span>(b, (int, float)):
+        <span class="keyword">raise</span> <span class="function">TypeError</span>(<span class="string">"Los argumentos deben ser números"</span>)
+    
+    <span class="keyword">if</span> b == <span class="number">0</span>:
+        <span class="keyword">raise</span> <span class="function">ValueError</span>(<span class="string">"No se puede dividir por cero"</span>)
+    
+    <span class="keyword">return</span> a / b
+                        </div>
+                    </div>
+                </div>
+
+                <div class="example-card">
+                    <h3>🎯 Una Responsabilidad</h3>
+                    <div class="code-container">
+                        <div class="code">
+<span class="comment"># ❌ Función que hace demasiado</span>
+<span class="keyword">def</span> <span class="function">procesar_pedido_malo</span>(productos, cliente):
+    <span class="comment"># Calcula total, aplica descuento, 
+    # envía email, actualiza inventario...</span>
+    <span class="keyword">pass</span>
+
+<span class="comment"># ✅ Funciones específicas</span>
+<span class="keyword">def</span> <span class="function">calcular_total</span>(productos):
+    <span class="keyword">return</span> <span class="function">sum</span>(p[<span class="string">'precio'</span>] <span class="keyword">for</span> p <span class="keyword">in</span> productos)
+
+<span class="keyword">def</span> <span class="function">aplicar_descuento</span>(total, descuento):
+    <span class="keyword">return</span> total * (<span class="number">1</span> - descuento)
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="concept-card">
+                <h3>🏗️ Principios de Diseño de Funciones</h3>
+                <ul style="margin-left: 20px; margin-top: 10px;">
+                    <li><strong>DRY (Don't Repeat Yourself):</strong> No repitas código</li>
+                    <li><strong>KISS (Keep It Simple, Stupid):</strong> Mantén las funciones simples</li>
+                    <li><strong>SRP (Single Responsibility Principle):</strong> Una función, una responsabilidad</li>
+                    <li><strong>Pure Functions:</strong> Misma entrada → misma salida, sin efectos secundarios</li>
+                </ul>
+            </div>
+
+            <div class="tips">
+                <div class="tips-title">💡 Consejos Profesionales</div>
+                <ul style="margin-left: 20px;">
+                    <li>Funciones de máximo 20-30 líneas</li>
+                    <li>Máximo 3-4 parámetros por función</li>
+                    <li>Usa type hints para mayor claridad</li>
+                    <li>Testea tus funciones con diferentes casos</li>
+                    <li>Maneja errores apropiadamente</li>
+                </ul>
+            </div>
+
+            <div class="interactive-exercise">
+                <h3>🔍 Análisis de Código</h3>
+                <p>Analiza este código y identifica qué se puede mejorar:</p>
+                <div class="code-container">
+                    <div class="code">
+<span class="keyword">def</span> <span class="function">calc</span>(x, y, z):
+    result = x + y
+    <span class="keyword">if</span> z == <span class="number">1</span>:
+        result = result * <span class="number">2</span>
+    <span class="keyword">elif</span> z == <span class="number">2</span>:
+        result = result / <span class="number">2</span>
+    <span class="keyword">print</span>(<span class="string">"El resultado es:"</span>, result)
+    <span class="keyword">return</span> result
+                    </div>
+                </div>
+                <textarea class="exercise-input" id="improveCode" placeholder="Escribe tu versión mejorada aquí...">def calcular_operacion(numero1, numero2, tipo_operacion):
+    # Tu versión mejorada aquí
+    pass</textarea>
+                <button class="btn" onclick="checkImprovement()">🎯 Verificar Mejora</button>
+                <div class="output" id="improveOutput">Tu análisis aparecerá aquí...</div>
+            </div>
+        </div>
+
+        <!-- Sección de Evaluación Final -->
+        <div id="evaluacion" class="section">
+            <h2>🎓 Evaluación Final</h2>
+
+            <div class="summary-card">
+                <h3>📋 Proyecto Final: Sistema de Gestión de Estudiantes</h3>
+                <p>Crea un sistema completo usando todas las técnicas aprendidas:</p>
+            </div>
+
+            <div class="interactive-exercise">
+                <h3>Parte 1: Función de Registro</h3>
+                <p>Crea una función para registrar estudiantes con validación:</p>
+                <textarea class="exercise-input" id="finalExercise1" placeholder="def registrar_estudiante(nombre, edad, email, carrera):">def registrar_estudiante(nombre, edad, email, carrera):
+    """
+    Registra un nuevo estudiante con validaciones
+    
+    Args:
+        nombre (str): Nombre completo del estudiante
+        edad (int): Edad del estudiante (18-65)
+        email (str): Email válido
+        carrera (str): Carrera a estudiar
+    
+    Returns:
+        dict: Información del estudiante o error
+    """
+    # Tu código aquí
+    pass</textarea>
+                <button class="btn" onclick="checkFinalExercise(1)">✅ Verificar Parte 1</button>
+                <div class="output" id="final1-output"></div>
+            </div>
+
+            <div class="interactive-exercise">
+                <h3>Parte 2: Sistema de Calificaciones</h3>
+                <p>Crea funciones para manejar calificaciones:</p>
+                <textarea class="exercise-input" id="finalExercise2" placeholder="def calcular_promedio_ponderado(calificaciones, pesos):">def calcular_promedio_ponderado(calificaciones, pesos):
+    """Calcula promedio ponderado de calificaciones"""
+    pass
+
+def determinar_estado_academico(promedio):
+    """Determina si el estudiante aprueba, está en prueba, etc."""
+    pass
+
+def generar_reporte_estudiante(estudiante, calificaciones):
+    """Genera reporte completo del estudiante"""
+    pass</textarea>
+                <button class="btn" onclick="checkFinalExercise(2)">✅ Verificar Parte 2</button>
+                <div class="output" id="final2-output"></div>
+            </div>
+
+            <div class="quiz-container">
+                <h3>🏆 Evaluación Final - Conceptos</h3>
+                <div id="finalQuiz">
+                    <div class="quiz-question">¿Cuál es la ventaja principal de usar funciones?</div>
+                    <div class="quiz-option" onclick="selectFinalQuiz(this, 'A')">A) Hacer el código más largo</div>
+                    <div class="quiz-option" onclick="selectFinalQuiz(this, 'B')">B) Reutilización y organización del código</div>
+                    <div class="quiz-option" onclick="selectFinalQuiz(this, 'C')">C) Hacer el programa más lento</div>
+                    <div class="quiz-option" onclick="selectFinalQuiz(this, 'D')">D) Solo funciona en Python</div>
+                </div>
+                <div id="finalQuizResult"></div>
+            </div>
+
+            <div class="summary-card">
+                <h3>🎯 ¡Felicitaciones!</h3>
+                <p>Has completado el módulo de Funciones y Procedimientos. Ahora puedes:</p>
+                <ul style="margin-left: 20px; margin-top: 10px; color: white;">
+                    <li>✅ Crear funciones reutilizables</li>
+                    <li>✅ Usar parámetros y valores de retorno</li>
+                    <li>✅ Aplicar mejores prácticas</li>
+                    <li>✅ Validar datos de entrada</li>
+                    <li>✅ Documentar tu código profesionalmente</li>
+                </ul>
+                <p style="margin-top: 15px;">
+                    <strong>Próximo módulo:</strong> Estructuras de Datos Avanzadas
+                </p>
+            </div>
+        </div>
+    </div>
+    <script src="js/mod5.js"></script>
+</body>
+</html>
