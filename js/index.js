@@ -70,7 +70,7 @@ const modules = [
 let studentProgress = {
     currentModule: 5,
     completedModules: [4],
-    totalProgress: 0.5
+    totalProgress: 50
 };
 
 function getStatusClass(status) {
