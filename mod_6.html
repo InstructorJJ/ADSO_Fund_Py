@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/vnd.microsoft.icon" id="favicon">
+        <title>Módulo 6: Estructuras de Datos - Fundamentos de Programación</title>
+        <link rel="stylesheet" href="css/mod6.css">
+    </head>
+    <body>
+        <div class="container">
+            <!-- Header del Módulo -->
+            <div class="header">
+                <h1>📚 Módulo 6: Estructuras de Datos</h1>
+                <p>Listas, Diccionarios y Tuplas en Python</p>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progressBar"></div>
+                </div>
+                <p>Progreso del Módulo: <span id="progressText">0%</span></p>
+            </div>
+
+            <!-- Sección 1: Introducción -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(1)">
+                    <h2>🎯 1. Introducción a las Estructuras de Datos</h2>
+                    <span class="toggle-icon" id="icon1">▼</span>
+                </div>
+                <div class="section-content" id="content1">
+                    <p>Las estructuras de datos son formas organizadas de almacenar y manipular información en nuestros programas. En Python, tenemos tres estructuras fundamentales:</p>
+                    
+                    <div class="comparison-table">
+                        <table>
+                            <tr>
+                                <th>Estructura</th>
+                                <th>Características</th>
+                                <th>Cuándo usar</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Listas</strong></td>
+                                <td>Ordenadas, modificables, permiten duplicados</td>
+                                <td>Colecciones que pueden cambiar</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Tuplas</strong></td>
+                                <td>Ordenadas, inmutables, permiten duplicados</td>
+                                <td>Datos que no deben cambiar</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Diccionarios</strong></td>
+                                <td>No ordenados*, modificables, claves únicas</td>
+                                <td>Relaciones clave-valor</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="example-box">
+                        <h3>🌟 Analogía del Mundo Real</h3>
+                        <p><strong>Lista:</strong> Como una lista de compras que puedes modificar</p>
+                        <p><strong>Tupla:</strong> Como las coordenadas de tu casa (no cambian)</p>
+                        <p><strong>Diccionario:</strong> Como una agenda telefónica (nombre → teléfono)</p>
+                    </div>
+
+                    <button class="btn" onclick="markComplete(1)">✅ Completar Introducción</button>
+                </div>
+            </div>
+
+            <!-- Sección 2: Listas -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(2)">
+                    <h2>📋 2. Listas: Colecciones Dinámicas</h2>
+                    <span class="toggle-icon" id="icon2">▼</span>
+                </div>
+                <div class="section-content" id="content2">
+                    <p>Las listas son la estructura de datos más versátil en Python. Pueden contener diferentes tipos de datos y se pueden modificar.</p>
+
+                    <div class="tabs">
+                        <button class="tab active" onclick="showTab('lists-basic')">Básico</button>
+                        <button class="tab" onclick="showTab('lists-methods')">Métodos</button>
+                        <button class="tab" onclick="showTab('lists-advanced')">Avanzado</button>
+                    </div>
+
+                    <div class="tab-content active" id="lists-basic">
+                        <h3>Creación y Acceso</h3>
+                        <div class="code-block">
+    # Crear listas
+    estudiantes = ["Ana", "Carlos", "Diana", "Eduardo"]
+    calificaciones = [85, 92, 78, 94]
+    mixta = ["Python", 3.9, True, [1, 2, 3]]
+
+    # Acceso por índice
+    print(estudiantes[0])    # Ana
+    print(estudiantes[-1])   # Eduardo (último elemento)
+
+    # Slicing (rebanadas)
+    print(estudiantes[1:3])  # ["Carlos", "Diana"]
+                        </div>
+
+                        <div class="interactive-demo">
+                            <h4>🎮 Demo Interactiva: Lista de Estudiantes</h4>
+                            <div class="input-group">
+                                <label>Agrega un estudiante:</label>
+                                <input type="text" id="studentInput" placeholder="Nombre del estudiante">
+                                <button class="btn" onclick="addStudent()">Agregar</button>
+                            </div>
+                            <div class="visualization">
+                                <div class="data-structure-visual" id="studentList">
+                                    <div class="data-item">Ana</div>
+                                    <div class="data-item">Carlos</div>
+                                    <div class="data-item">Diana</div>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary" onclick="removeLastStudent()">Eliminar Último</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="lists-methods">
+                        <h3>Métodos Esenciales de Listas</h3>
+                        <div class="code-block">
+    # Lista de tareas para un desarrollador
+    tareas = ["Diseñar interfaz", "Escribir código", "Hacer pruebas"]
+
+    # Agregar elementos
+    tareas.append("Documentar")                    # Al final
+    tareas.insert(1, "Revisar requisitos")        # En posición específica
+
+    # Eliminar elementos
+    tareas.remove("Hacer pruebas")                 # Por valor
+    tarea_eliminada = tareas.pop()                 # Último elemento
+    tarea_eliminada = tareas.pop(0)                # Por índice
+
+    # Buscar y contar
+    posicion = tareas.index("Escribir código")     # Encuentra posición
+    cantidad = tareas.count("Documentar")          # Cuenta ocurrencias
+
+    # Ordenar
+    calificaciones = [85, 92, 78, 94, 88]
+    calificaciones.sort()                          # Orden ascendente
+    calificaciones.sort(reverse=True)              # Orden descendente
+                        </div>
+
+                        <div class="exercise-box">
+                            <h4>💪 Ejercicio: Gestor de Inventario</h4>
+                            <p>Simula un sistema de inventario de productos:</p>
+                            <div class="input-group">
+                                <label>Producto:</label>
+                                <input type="text" id="productInput" placeholder="Nombre del producto">
+                                <button class="btn" onclick="addProduct()">Agregar al Inventario</button>
+                            </div>
+                            <div class="input-group">
+                                <label>Buscar producto:</label>
+                                <input type="text" id="searchInput" placeholder="Buscar...">
+                                <button class="btn btn-secondary" onclick="searchProduct()">Buscar</button>
+                            </div>
+                            <div class="result-box" id="inventoryResult">
+                                Inventario actual: []
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="lists-advanced">
+                        <h3>Técnicas Avanzadas</h3>
+                        <div class="code-block">
+    # List comprehensions - Creación elegante de listas
+    numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    pares = [n for n in numeros if n % 2 == 0]
+    cuadrados = [n**2 for n in numeros]
+
+    # Anidación de listas (matrices)
+    matriz = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+    print(matriz[1][2])  # Elemento en fila 1, columna 2 = 6
+
+    # Operaciones útiles
+    lista1 = [1, 2, 3]
+    lista2 = [4, 5, 6]
+    combinada = lista1 + lista2        # Concatenación
+    repetida = lista1 * 3              # Repetición
+
+    # Conversión a otros tipos
+    texto = "Python"
+    caracteres = list(texto)           # ['P', 'y', 't', 'h', 'o', 'n']
+                        </div>
+
+                        <div class="interactive-demo">
+                            <h4>🔥 Generador de Patrones</h4>
+                            <div class="input-group">
+                                <label>Número límite:</label>
+                                <input type="number" id="limitInput" value="10">
+                                <button class="btn" onclick="generatePattern()">Generar Patrón</button>
+                            </div>
+                            <div class="result-box" id="patternResult">
+                                Ingresa un número para generar patrones
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="markComplete(2)">✅ Completar Listas</button>
+                </div>
+            </div>
+
+            <!-- Sección 3: Tuplas -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(3)">
+                    <h2>🔒 3. Tuplas: Datos Inmutables</h2>
+                    <span class="toggle-icon" id="icon3">▼</span>
+                </div>
+                <div class="section-content" id="content3">
+                    <p>Las tuplas son colecciones ordenadas e inmutables. Perfectas para datos que no deben cambiar.</p>
+
+                    <div class="code-block">
+    # Crear tuplas
+    coordenadas = (10, 20)
+    persona = ("Ana", 25, "Desarrolladora")
+    colores_rgb = (255, 128, 64)
+
+    # Una tupla de un solo elemento necesita coma
+    singleton = (42,)
+
+    # Acceso igual que las listas
+    print(coordenadas[0])      # 10
+    print(persona[1:])         # (25, "Desarrolladora")
+
+    # Desempaquetado de tuplas
+    nombre, edad, profesion = persona
+    x, y = coordenadas
+    </div>
+
+                    <div class="example-box">
+                        <h3>🎯 Casos de Uso Prácticos</h3>
+                        <div class="code-block">
+    # Configuración de aplicación (no debe cambiar)
+    CONFIG = ("localhost", 8080, "desarrollo")
+    host, puerto, entorno = CONFIG
+
+    # Retornar múltiples valores de una función
+    def obtener_stats_usuario(usuario_id):
+        # Simular consulta a base de datos
+        return ("Juan Pérez", 150, 4.8)  # (nombre, puntos, rating)
+
+    nombre, puntos, rating = obtener_stats_usuario(123)
+
+    # Coordenadas de un mapa
+    ubicaciones = [
+        ("Oficina Principal", -74.0059, 40.7128),
+        ("Sucursal Norte", -74.0445, 40.7282),
+        ("Centro de Datos", -73.9857, 40.7484)
+    ]
+    </div>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🗺️ Sistema de Coordenadas</h4>
+                        <div class="input-group">
+                            <label>Nombre del lugar:</label>
+                            <input type="text" id="placeInput" placeholder="Ej: Casa, Oficina">
+                        </div>
+                        <div class="input-group">
+                            <label>Latitud:</label>
+                            <input type="number" id="latInput" placeholder="Ej: 40.7128" step="any">
+                        </div>
+                        <div class="input-group">
+                            <label>Longitud:</label>
+                            <input type="number" id="lonInput" placeholder="Ej: -74.0060" step="any">
+                        </div>
+                        <button class="btn" onclick="addLocation()">Agregar Ubicación</button>
+                        <div class="visualization">
+                            <div class="data-structure-visual" id="locationList">
+                                <div class="data-item">Casa: (4.7110, -74.0721)</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="exercise-box">
+                        <h4>💪 Ejercicio: Registro de Empleados</h4>
+                        <p>Crea un sistema que maneje información inmutable de empleados</p>
+                        <div class="code-block">
+    # Estructura: (id, nombre, departamento, salario)
+    empleados = [
+        (1001, "María García", "Desarrollo", 75000),
+        (1002, "Carlos López", "Marketing", 65000),
+        (1003, "Ana Rodríguez", "Ventas", 58000)
+    ]
+
+    # Tu tarea: implementar función de búsqueda por departamento
+    def buscar_por_departamento(empleados, departamento):
+        # Tu código aquí
+        pass
+    </div>
+                        <div class="input-group">
+                            <label>Departamento a buscar:</label>
+                            <input type="text" id="deptInput" placeholder="Ej: Desarrollo">
+                            <button class="btn btn-secondary" onclick="searchByDepartment()">Buscar</button>
+                        </div>
+                        <div class="result-box" id="employeeResult">
+                            Resultados aparecerán aquí
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="markComplete(3)">✅ Completar Tuplas</button>
+                </div>
+            </div>
+
+            <!-- Sección 4: Diccionarios -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(4)">
+                    <h2>🗝️ 4. Diccionarios: Mapeo Clave-Valor</h2>
+                    <span class="toggle-icon" id="icon4">▼</span>
+                </div>
+                <div class="section-content" id="content4">
+                    <p>Los diccionarios almacenan datos en pares clave-valor, permitiendo acceso rápido y eficiente.</p>
+
+                    <div class="tabs">
+                        <button class="tab active" onclick="showTab('dict-basic')">Básico</button>
+                        <button class="tab" onclick="showTab('dict-methods')">Métodos</button>
+                        <button class="tab" onclick="showTab('dict-nested')">Anidados</button>
+                    </div>
+
+                    <div class="tab-content active" id="dict-basic">
+                        <h3>Creación y Uso Básico</h3>
+                        <div class="code-block">
+    # Crear diccionarios
+    estudiante = {
+        "nombre": "Ana García",
+        "edad": 22,
+        "carrera": "Ingeniería de Software",
+        "calificaciones": [85, 92, 88, 95]
+    }
+
+    # Diferentes formas de crear
+    productos = dict(laptop=1200, mouse=25, teclado=75)
+    vacio = {}
+
+    # Acceso a valores
+    print(estudiante["nombre"])           # Ana García
+    print(estudiante.get("edad"))         # 22
+    print(estudiante.get("telefono", "No disponible"))  # Valor por defecto
+
+    # Modificar valores
+    estudiante["edad"] = 23
+    estudiante["telefono"] = "555-0123"  # Agregar nueva clave
+    </div>
+
+                        <div class="interactive-demo">
+                            <h4>👤 Perfil de Usuario Dinámico</h4>
+                            <div class="input-group">
+                                <label>Clave:</label>
+                                <input type="text" id="keyInput" placeholder="Ej: nombre, edad, hobby">
+                            </div>
+                            <div class="input-group">
+                                <label>Valor:</label>
+                                <input type="text" id="valueInput" placeholder="Ej: Juan, 25, programar">
+                            </div>
+                            <button class="btn" onclick="addToProfile()">Agregar al Perfil</button>
+                            <div class="visualization">
+                                <div class="data-structure-visual" id="profileDict">
+                                    <div class="data-item dict-item">
+                                        <div class="dict-key">nombre</div>
+                                        <div class="dict-value">Usuario</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <button class="btn btn-secondary" onclick="clearProfile()">Limpiar Perfil</button>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="dict-methods">
+                        <h3>Métodos Útiles de Diccionarios</h3>
+                        <div class="code-block">
+    # Base de datos de productos
+    inventario = {
+        "laptop": {"precio": 1200, "stock": 15, "categoria": "electrónicos"},
+        "mouse": {"precio": 25, "stock": 50, "categoria": "accesorios"},
+        "teclado": {"precio": 75, "stock": 30, "categoria": "accesorios"}
+    }
+
+    # Métodos de acceso
+    claves = inventario.keys()           # Todas las claves
+    valores = inventario.values()        # Todos los valores
+    items = inventario.items()           # Pares clave-valor
+
+    # Iterar sobre diccionarios
+    for producto, info in inventario.items():
+        print(f"{producto}: ${info['precio']}")
+
+    # Métodos de modificación
+    inventario.update({"tablet": {"precio": 300, "stock": 20}})
+    info_mouse = inventario.pop("mouse")       # Elimina y retorna
+    inventario.clear()                         # Vacía el diccionario
+
+    # Copiar diccionarios
+    copia_inventario = inventario.copy()
+    </div>
+
+                        <div class="exercise-box">
+                            <h4>💪 Ejercicio: Sistema de Calificaciones</h4>
+                            <p>Implementa un sistema para manejar calificaciones de estudiantes</p>
+                            <div class="input-group">
+                                <label>Estudiante:</label>
+                                <input type="text" id="studentName" placeholder="Nombre del estudiante">
+                            </div>
+                            <div class="input-group">
+                                <label>Materia:</label>
+                                <input type="text" id="subject" placeholder="Ej: Matemáticas">
+                            </div>
+                            <div class="input-group">
+                                <label>Calificación:</label>
+                                <input type="number" id="grade" placeholder="0-100" min="0" max="100">
+                            </div>
+                            <button class="btn" onclick="addGrade()">Agregar Calificación</button>
+                            <button class="btn btn-secondary" onclick="calculateAverage()">Calcular Promedio</button>
+                            <div class="result-box" id="gradesResult">
+                                Sistema de calificaciones activo
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="dict-nested">
+                        <h3>Diccionarios Anidados</h3>
+                        <div class="code-block">
+    # Sistema de gestión de empresa
+    empresa = {
+        "departamentos": {
+            "desarrollo": {
+                "empleados": ["Ana", "Carlos", "Diana"],
+                "presupuesto": 250000,
+                "proyectos": ["App Móvil", "Sistema Web"]
+            },
+            "marketing": {
+                "empleados": ["Elena", "Fernando"],
+                "presupuesto": 150000,
+                "proyectos": ["Campaña Digital", "Rebranding"]
+            }
+        },
+        "ubicacion": "Ciudad de México",
+        "fundada": 2018
+    }
+
+    # Acceso a datos anidados
+    empleados_dev = empresa["departamentos"]["desarrollo"]["empleados"]
+    primer_empleado = empresa["departamentos"]["desarrollo"]["empleados"][0]
+
+    # Modificar datos anidados
+    empresa["departamentos"]["desarrollo"]["empleados"].append("Luis")
+    empresa["departamentos"]["ventas"] = {
+        "empleados": ["María"],
+        "presupuesto": 100000,
+        "proyectos": []
+    }
+    </div>
+
+                                                <div class="interactive-demo">
+                            <h4>🏢 Constructor de Organización</h4>
+                            <div class="input-group">
+                                <label>Departamento:</label>
+                                <input type="text" id="deptName" placeholder="Ej: Desarrollo">
+                            </div>
+                            <div class="input-group">
+                                <label>Empleado:</label>
+                                <input type="text" id="empName" placeholder="Nombre del empleado">
+                            </div>
+                            <div class="input-group">
+                                <label>Presupuesto:</label>
+                                <input type="number" id="budget" placeholder="Presupuesto del departamento">
+                            </div>
+                            <button class="btn" onclick="createDepartment()">Crear Departamento</button>
+                            <button class="btn btn-secondary" onclick="addEmployee()">Agregar Empleado</button>
+                            <div class="result-box" id="orgResult">
+                                Estructura organizacional aparecerá aquí
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="markComplete(4)">✅ Completar Diccionarios</button>
+                </div>
+            </div>
+
+            <!-- Sección 5: Comparación y Casos de Uso -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(5)">
+                    <h2>⚖️ 5. Comparación y Casos de Uso</h2>
+                    <span class="toggle-icon" id="icon5">▼</span>
+                </div>
+                <div class="section-content" id="content5">
+                    <p>Aprende cuándo usar cada estructura de datos según el contexto y los requisitos del proyecto.</p>
+
+                    <div class="comparison-table">
+                        <table>
+                            <tr>
+                                <th>Criterio</th>
+                                <th>Lista</th>
+                                <th>Tupla</th>
+                                <th>Diccionario</th>
+                            </tr>
+                            <tr>
+                                <td><strong>Mutabilidad</strong></td>
+                                <td>✅ Modificable</td>
+                                <td>❌ Inmutable</td>
+                                <td>✅ Modificable</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Orden</strong></td>
+                                <td>✅ Mantiene orden</td>
+                                <td>✅ Mantiene orden</td>
+                                <td>✅ Mantiene orden (Python 3.7+)</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Acceso</strong></td>
+                                <td>Por índice [0,1,2...]</td>
+                                <td>Por índice [0,1,2...]</td>
+                                <td>Por clave ["nombre"]</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Duplicados</strong></td>
+                                <td>✅ Permite</td>
+                                <td>✅ Permite</td>
+                                <td>❌ Claves únicas</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Performance</strong></td>
+                                <td>O(n) búsqueda</td>
+                                <td>O(n) búsqueda</td>
+                                <td>O(1) acceso</td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <div class="example-box">
+                        <h3>🎯 Escenarios de Desarrollo de Software</h3>
+                        
+                        <h4>📋 Usar Listas cuando:</h4>
+                        <div class="code-block">
+    # Lista de tareas en un proyecto
+    tareas_pendientes = [
+        "Diseñar base de datos",
+        "Implementar API REST",
+        "Crear interfaz de usuario",
+        "Escribir pruebas unitarias"
+    ]
+
+    # Lista de usuarios conectados (cambia constantemente)
+    usuarios_activos = ["user123", "user456", "user789"]
+    usuarios_activos.append("user101")  # Se conecta nuevo usuario
+    usuarios_activos.remove("user456")  # Usuario se desconecta
+
+    # Historial de transacciones
+    historial_transacciones = []
+    historial_transacciones.append({"tipo": "deposito", "monto": 1000})
+    </div>
+
+                        <h4>🔒 Usar Tuplas cuando:</h4>
+                        <div class="code-block">
+    # Configuración de base de datos (no debe cambiar)
+    DB_CONFIG = ("localhost", 5432, "mi_app", "usuario_db")
+
+    # Coordenadas geográficas
+    ubicaciones_sucursales = [
+        ("Sucursal Centro", -74.0059, 40.7128),
+        ("Sucursal Norte", -74.0445, 40.7282)
+    ]
+
+    # Retornar múltiples valores de una función
+    def obtener_info_producto(id_producto):
+        return ("Laptop Gaming", 1500.00, "En Stock", 4.5)
+
+    nombre, precio, estado, rating = obtener_info_producto(123)
+    </div>
+
+                        <h4>🗝️ Usar Diccionarios cuando:</h4>
+                        <div class="code-block">
+    # Perfil de usuario con múltiples atributos
+    usuario = {
+        "id": 12345,
+        "nombre": "María González",
+        "email": "maria@email.com",
+        "rol": "admin",
+        "configuraciones": {
+            "tema": "oscuro",
+            "idioma": "es",
+            "notificaciones": True
+        }
+    }
+
+    # Cache de consultas frecuentes
+    cache_consultas = {}
+    cache_consultas["user_123"] = {"nombre": "Juan", "puntos": 150}
+
+    # Conteo de elementos
+    contador_palabras = {}
+    for palabra in texto.split():
+        contador_palabras[palabra] = contador_palabras.get(palabra, 0) + 1
+    </code>
+                    </div>
+
+                    <div class="interactive-demo">
+                        <h4>🧠 Simulador de Decisiones</h4>
+                        <p>Elige la estructura de datos correcta para cada escenario:</p>
+                        
+                        <div class="exercise-box">
+                            <p id="scenario">Escenario: Almacenar las coordenadas GPS de una ubicación fija</p>
+                            <div>
+                                <button class="btn" onclick="checkAnswer('lista', false)">Lista</button>
+                                <button class="btn" onclick="checkAnswer('tupla', true)">Tupla</button>
+                                <button class="btn" onclick="checkAnswer('diccionario', false)">Diccionario</button>
+                            </div>
+                            <div class="result-box" id="decisionResult">
+                                Selecciona una opción
+                            </div>
+                            <button class="btn btn-secondary" onclick="nextScenario()">Siguiente Escenario</button>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="markComplete(5)">✅ Completar Comparación</button>
+                </div>
+            </div>
+
+            <!-- Sección 6: Ejercicios Prácticos -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(6)">
+                    <h2>💪 6. Ejercicios Prácticos</h2>
+                    <span class="toggle-icon" id="icon6">▼</span>
+                </div>
+                <div class="section-content" id="content6">
+                    <p>Practica con ejercicios graduales que simulan situaciones reales de desarrollo.</p>
+
+                    <div class="tabs">
+                        <button class="tab active" onclick="showTab('ex-beginner')">Principiante</button>
+                        <button class="tab" onclick="showTab('ex-intermediate')">Intermedio</button>
+                        <button class="tab" onclick="showTab('ex-advanced')">Avanzado</button>
+                    </div>
+
+                    <div class="tab-content active" id="ex-beginner">
+                        <h3>🟢 Nivel Principiante</h3>
+                        
+                        <div class="exercise-box">
+                            <h4>Ejercicio 1: Lista de Compras Inteligente</h4>
+                            <p>Crea una aplicación que maneje una lista de compras:</p>
+                            <div class="code-block">
+    # Funciones a implementar:
+    # 1. agregar_producto(lista, producto)
+    # 2. eliminar_producto(lista, producto)  
+    # 3. mostrar_lista(lista)
+    # 4. contar_productos(lista)
+
+    lista_compras = []
+    # Tu implementación aquí
+    </div>
+                            <div class="input-group">
+                                <label>Producto:</label>
+                                <input type="text" id="shopItem" placeholder="Ej: Leche, Pan, Huevos">
+                                <button class="btn" onclick="addShopItem()">Agregar</button>
+                                <button class="btn btn-secondary" onclick="removeShopItem()">Eliminar</button>
+                            </div>
+                            <div class="result-box" id="shoppingResult">
+                                Lista de compras: []
+                            </div>
+                        </div>
+
+                        <div class="exercise-box">
+                            <h4>Ejercicio 2: Información Personal</h4>
+                            <p>Usa una tupla para almacenar información personal inmutable:</p>
+                            <div class="input-group">
+                                <label>Nombre:</label>
+                                <input type="text" id="personName" placeholder="Tu nombre">
+                            </div>
+                            <div class="input-group">
+                                <label>Edad:</label>
+                                <input type="number" id="personAge" placeholder="Tu edad">
+                            </div>
+                            <div class="input-group">
+                                <label>Ciudad:</label>
+                                <input type="text" id="personCity" placeholder="Tu ciudad">
+                            </div>
+                            <button class="btn" onclick="createPersonTuple()">Crear Tupla Personal</button>
+                            <div class="result-box" id="personResult">
+                                Tupla personal aparecerá aquí
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="ex-intermediate">
+                        <h3>🟡 Nivel Intermedio</h3>
+                        
+                        <div class="exercise-box">
+                            <h4>Ejercicio 3: Sistema de Biblioteca</h4>
+                            <p>Implementa un sistema de gestión de biblioteca usando diccionarios:</p>
+                            <div class="code-block">
+    biblioteca = {
+        "libros": {},
+        "usuarios": {},
+        "prestamos": []
+    }
+
+    # Funciones a implementar:
+    # 1. agregar_libro(titulo, autor, isbn)
+    # 2. registrar_usuario(nombre, id_usuario)
+    # 3. prestar_libro(id_usuario, isbn)
+    # 4. devolver_libro(id_usuario, isbn)
+    </div>
+                            <div class="input-group">
+                                <label>Título del libro:</label>
+                                <input type="text" id="bookTitle" placeholder="Ej: El Quijote">
+                            </div>
+                            <div class="input-group">
+                                <label>Autor:</label>
+                                <input type="text" id="bookAuthor" placeholder="Ej: Miguel de Cervantes">
+                            </div>
+                            <div class="input-group">
+                                <label>ISBN:</label>
+                                <input type="text" id="bookISBN" placeholder="Ej: 978-84-376-0494-7">
+                            </div>
+                            <button class="btn" onclick="addBook()">Agregar Libro</button>
+                            <div class="result-box" id="libraryResult">
+                                Biblioteca: 0 libros registrados
+                            </div>
+                        </div>
+
+                        <div class="exercise-box">
+                            <h4>Ejercicio 4: Análisis de Datos de Ventas</h4>
+                            <p>Procesa datos de ventas usando diferentes estructuras:</p>
+                            <div class="input-group">
+                                <label>Producto:</label>
+                                <input type="text" id="saleProduct" placeholder="Ej: Laptop">
+                            </div>
+                            <div class="input-group">
+                                <label>Cantidad:</label>
+                                <input type="number" id="saleQuantity" placeholder="Ej: 5">
+                            </div>
+                            <div class="input-group">
+                                <label>Precio unitario:</label>
+                                <input type="number" id="salePrice" placeholder="Ej: 1200">
+                            </div>
+                            <button class="btn" onclick="addSale()">Registrar Venta</button>
+                            <button class="btn btn-secondary" onclick="generateSalesReport()">Generar Reporte</button>
+                            <div class="result-box" id="salesResult">
+                                Sistema de ventas activo
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="tab-content" id="ex-advanced">
+                        <h3>🔴 Nivel Avanzado</h3>
+                        
+                        <div class="exercise-box">
+                            <h4>Ejercicio 5: Sistema de Gestión de Proyectos</h4>
+                            <p>Crea un sistema complejo usando estructuras anidadas:</p>
+                            <div class="code-block">
+    # Estructura del proyecto
+    proyecto = {
+        "nombre": "Desarrollo App Móvil",
+        "estado": "En progreso",
+        "equipo": {
+            "desarrolladores": [
+                {"nombre": "Ana", "rol": "Full Stack", "tareas": []},
+                {"nombre": "Carlos", "rol": "Frontend", "tareas": []}
+            ],
+            "designer": {"nombre": "Diana", "especialidad": "UI/UX"},
+            "manager": {"nombre": "Eduardo", "experiencia": 8}
+        },
+        "milestones": [
+            ("Diseño", "2024-02-15", "Completado"),
+            ("Desarrollo", "2024-05-30", "En progreso"),
+            ("Testing", "2024-07-15", "Pendiente")
+        ],
+        "recursos": {
+            "presupuesto": 50000,
+            "herramientas": ["React Native", "Node.js", "MongoDB"],
+            "gastos": []
+        }
+    }
+    </div>
+                            <div class="input-group">
+                                <label>Nombre del desarrollador:</label>
+                                <input type="text" id="devName" placeholder="Nombre">
+                            </div>
+                            <div class="input-group">
+                                <label>Tarea asignada:</label>
+                                <input type="text" id="taskName" placeholder="Descripción de la tarea">
+                            </div>
+                            <button class="btn" onclick="assignTask()">Asignar Tarea</button>
+                            <div class="input-group">
+                                <label>Gasto (descripción):</label>
+                                <input type="text" id="expenseDesc" placeholder="Ej: Licencia software">
+                            </div>
+                            <div class="input-group">
+                                <label>Monto:</label>
+                                <input type="number" id="expenseAmount" placeholder="Monto del gasto">
+                            </div>
+                            <button class="btn btn-secondary" onclick="addExpense()">Agregar Gasto</button>
+                            <div class="result-box" id="projectResult">
+                                Sistema de proyectos inicializado
+                            </div>
+                        </div>
+
+                        <div class="exercise-box">
+                            <h4>Ejercicio 6: Optimización de Rendimiento</h4>
+                            <p>Compara el rendimiento entre diferentes estructuras:</p>
+                            <button class="btn" onclick="performanceTest()">Ejecutar Test de Rendimiento</button>
+                            <div class="result-box" id="performanceResult">
+                                Presiona el botón para ejecutar pruebas de rendimiento
+                            </div>
+                        </div>
+                    </div>
+
+                    <button class="btn" onclick="markComplete(6)">✅ Completar Ejercicios</button>
+                </div>
+            </div>
+
+            <!-- Sección 7: Proyecto Integrador -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(7)">
+                    <h2>🚀 7. Proyecto Integrador</h2>
+                    <span class="toggle-icon" id="icon7">▼</span>
+                </div>
+                <div class="section-content" id="content7">
+                    <div class="final-project">
+                        <h3>🎯 Sistema de Gestión Estudiantil</h3>
+                        <p>Desarrolla un sistema completo que integre todas las estructuras de datos aprendidas.</p>
+
+                        <div class="code-block">
+    # Estructura base del sistema
+    sistema_estudiantil = {
+        "estudiantes": {},           # Diccionario de estudiantes
+        "cursos": {},               # Diccionario de cursos  
+        "profesores": [],           # Lista de profesores
+        "inscripciones": [],        # Lista de tuplas (estudiante_id, curso_id)
+        "calificaciones": {},       # Diccionario anidado
+        "configuracion": ("Sistema v1.0", "2024", "Activo")  # Tupla de config
+    }
+    </div>
+
+                        <div class="tabs">
+                            <button class="tab active" onclick="showTab('project-students')">Estudiantes</button>
+                            <button class="tab" onclick="showTab('project-courses')">Cursos</button>
+                            <button class="tab" onclick="showTab('project-grades')">Calificaciones</button>
+                            <button class="tab" onclick="showTab('project-reports')">Reportes</button>
+                        </div>
+
+                        <div class="tab-content active" id="project-students">
+                            <h4>👨‍🎓 Gestión de Estudiantes</h4>
+                            <div class="input-group">
+                                <label>ID Estudiante:</label>
+                                <input type="text" id="studentId" placeholder="Ej: EST001">
+                            </div>
+                            <div class="input-group">
+                                <label>Nombre completo:</label>
+                                <input type="text" id="studentFullName" placeholder="Nombre completo">
+                            </div>
+                            <div class="input-group">
+                                <label>Edad:</label>
+                                <input type="number" id="studentAge" placeholder="Edad">
+                            </div>
+                            <div class="input-group">
+                                <label>Carrera:</label>
+                                <input type="text" id="studentCareer" placeholder="Carrera">
+                            </div>
+                            <button class="btn" onclick="registerStudent()">Registrar Estudiante</button>
+                            <div class="result-box" id="studentSystemResult">
+                                Sistema de estudiantes activo
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="project-courses">
+                            <h4>📚 Gestión de Cursos</h4>
+                            <div class="input-group">
+                                <label>Código del curso:</label>
+                                <input type="text" id="courseCode" placeholder="Ej: PROG101">
+                            </div>
+                            <div class="input-group">
+                                <label>Nombre del curso:</label>
+                                <input type="text" id="courseName" placeholder="Ej: Fundamentos de Programación">
+                            </div>
+                            <div class="input-group">
+                                <label>Créditos:</label>
+                                <input type="number" id="courseCredits" placeholder="Créditos">
+                            </div>
+                            <div class="input-group">
+                                <label>Profesor:</label>
+                                <input type="text" id="courseProfessor" placeholder="Nombre del profesor">
+                            </div>
+                            <button class="btn" onclick="createCourse()">Crear Curso</button>
+                            <div class="result-box" id="courseSystemResult">
+                                Sistema de cursos activo
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="project-grades">
+                            <h4>📊 Sistema de Calificaciones</h4>
+                            <div class="input-group">
+                                <label>ID Estudiante:</label>
+                                <input type="text" id="gradeStudentId" placeholder="ID del estudiante">
+                            </div>
+                            <div class="input-group">
+                                <label>Código del curso:</label>
+                                <input type="text" id="gradeCourseCode" placeholder="Código del curso">
+                            </div>
+                            <div class="input-group">
+                                <label>Calificación:</label>
+                                <input type="number" id="gradeValue" placeholder="Calificación (0-100)" min="0" max="100">
+                            </div>
+                            <div class="input-group">
+                                <label>Tipo de evaluación:</label>
+                                <select id="gradeType">
+                                    <option value="parcial">Parcial</option>
+                                    <option value="final">Final</option>
+                                    <option value="tarea">Tarea</option>
+                                    <option value="proyecto">Proyecto</option>
+                                </select>
+                            </div>
+                            <button class="btn" onclick="addGradeToSystem()">Agregar Calificación</button>
+                            <button class="btn btn-secondary" onclick="calculateStudentAverage()">Calcular Promedio</button>
+                            <div class="result-box" id="gradeSystemResult">
+                                Sistema de calificaciones activo
+                            </div>
+                        </div>
+
+                        <div class="tab-content" id="project-reports">
+                            <h4>📈 Generación de Reportes</h4>
+                            <div class="input-group">
+                                <label>Tipo de reporte:</label>
+                                <select id="reportType">
+                                    <option value="students">Lista de Estudiantes</option>
+                                    <option value="courses">Cursos Disponibles</option>
+                                    <option value="enrollments">Inscripciones</option>
+                                    <option value="averages">Promedios por Curso</option>
+                                </select>
+                            </div>
+                            <button class="btn" onclick="generateSystemReport()">Generar Reporte</button>
+                            <div class="result-box" id="reportResult">
+                                Selecciona un tipo de reporte
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="achievement-badge">
+                        🏆 Proyecto Completado: Sistema Estudiantil
+                    </div>
+
+                    <button class="btn" onclick="markComplete(7)">✅ Completar Proyecto</button>
+                </div>
+            </div>
+
+            <!-- Sección 8: Resumen y Evaluación -->
+            <div class="section">
+                <div class="section-header" onclick="toggleSection(8)">
+                    <h2>🎓 8. Resumen y Evaluación Final</h2>
+                    <span class="toggle-icon" id="icon8">▼</span>
+                </div>
+                <div class="section-content" id="content8">
+                    <h3>📋 Conceptos Clave Dominados</h3>
+                    <div class="visualization">
+                        <div class="data-structure-visual">
+                            <div class="data-item" onclick="showConcept('listas')">
+                                📋 Listas<br><small>Dinámicas y modificables</small>
+                            </div>
+                            <div class="data-item dict-item" onclick="showConcept('tuplas')">
+                                🔒 Tuplas<br><small>Inmutables y seguras</small>
+                            </div>
+                            <div class="data-item" style="background: #9C27B0" onclick="showConcept('diccionarios')">
+                                🗝️ Diccionarios<br><small>Clave-valor eficientes</small>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="result-box" id="conceptDetail">
+                        Haz clic en un concepto para ver el resumen
+                    </div>
+
+                    <h3>🧠 Evaluación Final Interactiva</h3>
+                    <div class="exercise-box">
+                        <div id="quizContainer">
+                            <h4 id="questionTitle">Pregunta 1 de 5</h4>
+                            <p id="questionText">¿Cuál es la principal diferencia entre una lista y una tupla?</p>
+                            <div>
+                                <button class="btn" onclick="selectAnswer(0)">Las listas son más rápidas</button>
+                                <button class="btn" onclick="selectAnswer(1)">Las tuplas son inmutables</button>
+                                <button class="btn" onclick="selectAnswer(2)">Los diccionarios son mejores</button>
+                            </div>
+                            <div class="result-box" id="quizResult">
+                                Puntuación: 0/5
+                            </div>
+                            <button class="btn btn-secondary" onclick="nextQuestion()">Siguiente Pregunta</button>
+                        </div>
+                    </div>
+
+                    <h3>🎯 Próximos Pasos en tu Aprendizaje</h3>
+                    <div class="example-box">
+                        <p><strong>Módulo 7:</strong> Funciones y Programación Modular</p>
+                        <p><strong>Módulo 8:</strong> Proyecto Final Integrador</p>
+                        <p><strong>Recursos adicionales:</strong></p>
+                        <ul>
+                            <li>Documentación oficial de Python</li>
+                            <li>Práctica en plataformas como LeetCode</li>
+                            <li>Proyectos personales aplicando estructuras de datos</li>
+                        </ul>
+                    </div>
+
+                    <div class="achievement-badge">
+                        🌟 ¡Felicitaciones! Has completado el Módulo 6
+                    </div>
+
+                    <button class="btn" onclick="completeModule()">🎉 Finalizar Módulo</button>
+                </div>
+            </div>
+        </div>
+        <script src="js/mod6.js"></script>
+    </body>
+</html>

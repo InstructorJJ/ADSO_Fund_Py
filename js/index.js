@@ -13,7 +13,7 @@ const modules = [
         description: "Aprende sobre variables, números, cadenas, booleanos y cómo Python maneja los diferentes tipos de datos.",
         duration: "3 horas",
         exercises: 6,
-        status: "available",
+        status: "current",
         topics: ["Variables", "Números", "Cadenas", "Booleanos", "Conversiones"]
     },
     {
@@ -21,7 +21,7 @@ const modules = [
         description: "Domina los operadores aritméticos, de comparación, lógicos y cómo construir expresiones complejas.",
         duration: "3 horas",
         exercises: 5,
-        status: "locked",
+        status: "current",
         topics: ["Operadores aritméticos", "Comparación", "Operadores lógicos", "Precedencia"]
     },
     {
@@ -29,7 +29,7 @@ const modules = [
         description: "Controla el flujo de tu programa con if, elif, else, bucles for y while para crear lógica compleja.",
         duration: "4 horas",
         exercises: 8,
-        status: "locked",
+        status: "current",
         topics: ["Condicionales if/else", "Bucles for", "Bucles while", "Control de flujo"]
     },
     {
@@ -37,7 +37,7 @@ const modules = [
         description: "Crea código reutilizable con funciones, parámetros, valores de retorno y mejores prácticas.",
         duration: "4 horas",
         exercises: 7,
-        status: "locked",
+        status: "current",
         topics: ["Definir funciones", "Parámetros", "Return", "Scope", "Recursión"]
     },
     {
@@ -45,7 +45,7 @@ const modules = [
         description: "Trabaja con listas, tuplas, diccionarios y conjuntos para organizar y manipular información.",
         duration: "5 horas",
         exercises: 10,
-        status: "locked",
+        status: "current",
         topics: ["Listas", "Tuplas", "Diccionarios", "Conjuntos", "Comprensiones"]
     },
     {
