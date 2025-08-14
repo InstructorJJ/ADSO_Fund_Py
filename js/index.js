@@ -5,7 +5,7 @@ const modules = [
         description: "Instalación de Python, configuración del entorno de desarrollo y tu primer programa 'Hola Mundo'.",
         duration: "2 horas",
         exercises: 3,
-        status: "current",
+        status: "completed",
         topics: ["Instalación de Python", "IDE y editores", "Primer programa", "Conceptos básicos"]
     },
     {
@@ -13,7 +13,7 @@ const modules = [
         description: "Aprende sobre variables, números, cadenas, booleanos y cómo Python maneja los diferentes tipos de datos.",
         duration: "3 horas",
         exercises: 6,
-        status: "current",
+        status: "completed",
         topics: ["Variables", "Números", "Cadenas", "Booleanos", "Conversiones"]
     },
     {
@@ -21,7 +21,7 @@ const modules = [
         description: "Domina los operadores aritméticos, de comparación, lógicos y cómo construir expresiones complejas.",
         duration: "3 horas",
         exercises: 5,
-        status: "current",
+        status: "completed",
         topics: ["Operadores aritméticos", "Comparación", "Operadores lógicos", "Precedencia"]
     },
     {
@@ -29,7 +29,7 @@ const modules = [
         description: "Controla el flujo de tu programa con if, elif, else, bucles for y while para crear lógica compleja.",
         duration: "4 horas",
         exercises: 8,
-        status: "current",
+        status: "completed",
         topics: ["Condicionales if/else", "Bucles for", "Bucles while", "Control de flujo"]
     },
     {
@@ -45,7 +45,7 @@ const modules = [
         description: "Trabaja con listas, tuplas, diccionarios y conjuntos para organizar y manipular información.",
         duration: "5 horas",
         exercises: 10,
-        status: "current",
+        status: "available",
         topics: ["Listas", "Tuplas", "Diccionarios", "Conjuntos", "Comprensiones"]
     },
     {
@@ -69,7 +69,7 @@ const modules = [
 // Estado del progreso del estudiante
 let studentProgress = {
     currentModule: 5,
-    completedModules: [],
+    completedModules: [5],
     totalProgress: 5
 };
 
