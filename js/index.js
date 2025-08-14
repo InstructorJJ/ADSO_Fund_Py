@@ -69,7 +69,7 @@ const modules = [
 // Estado del progreso del estudiante
 let studentProgress = {
     currentModule: 5,
-    completedModules: [5],
+    completedModules: [1,2,3,4,5],
     totalProgress: 50
 };
 
