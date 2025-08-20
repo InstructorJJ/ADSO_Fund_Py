@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Módulo 8 - Proyecto Final Integrador</title>
+        <link rel="stylesheet" href="css/mod8.css">
+    </head>
+    <body>
+        <div class="container">
+            <div class="header">
+                <h1>🎯 Módulo 8: Proyecto Final Integrador</h1>
+                <p>Aplicación Completa - Sistema de Gestión de Biblioteca</p>
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+                <p><strong>Módulo 8 de 8 - ¡Completando el curso! 🎉</strong></p>
+            </div>
+
+            <div class="main-content">
+                <div class="section project-description">
+                    <h2><div class="icon">🏗️</div>Descripción del Proyecto</h2>
+                    <p><strong>Sistema de Gestión de Biblioteca Digital</strong></p>
+                    <p>Crearemos una aplicación completa que integre todos los conceptos aprendidos en los módulos anteriores:</p>
+                    <ul class="feature-list">
+                        <li><strong>Variables y tipos de datos:</strong> Almacenamiento de información de libros y usuarios</li>
+                        <li><strong>Estructuras de control:</strong> Validaciones y flujo de la aplicación</li>
+                        <li><strong>Funciones:</strong> Modularización del código</li>
+                        <li><strong>Estructuras de datos:</strong> Listas y diccionarios para organizar datos</li>
+                        <li><strong>Manejo de archivos:</strong> Persistencia de datos</li>
+                        <li><strong>POO:</strong> Clases para Libro, Usuario y Biblioteca</li>
+                        <li><strong>Manejo de errores:</strong> Validaciones robustas</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><div class="icon">📚</div>Funcionalidades</h2>
+                    <ul class="feature-list">
+                        <li>Registro de libros y usuarios</li>
+                        <li>Préstamo y devolución</li>
+                        <li>Búsqueda y filtros</li>
+                        <li>Reportes estadísticos</li>
+                        <li>Interfaz de usuario intuitiva</li>
+                        <li>Persistencia de datos en archivos</li>
+                    </ul>
+                </div>
+
+                <div class="section">
+                    <h2><div class="icon">🎯</div>Objetivos de Aprendizaje</h2>
+                    <ul class="feature-list">
+                        <li>Integrar conceptos fundamentales</li>
+                        <li>Desarrollar pensamiento lógico</li>
+                        <li>Crear código modular y reutilizable</li>
+                        <li>Implementar buenas prácticas</li>
+                        <li>Resolver problemas complejos</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="section interactive-section">
+                <h2><div class="icon">🚀</div>Desarrollo Paso a Paso</h2>
+                <p>Sigue estos pasos para construir tu aplicación completa:</p>
+                
+                <div class="step-container">
+                    <div class="step active" onclick="showStep(1)">
+                        <div class="step-number">1</div>
+                        <h3>Diseño de Clases</h3>
+                        <p>Definir las clases principales</p>
+                    </div>
+                    <div class="step" onclick="showStep(2)">
+                        <div class="step-number">2</div>
+                        <h3>Gestión de Datos</h3>
+                        <p>Implementar CRUD básico</p>
+                    </div>
+                    <div class="step" onclick="showStep(3)">
+                        <div class="step-number">3</div>
+                        <h3>Lógica de Negocio</h3>
+                        <p>Préstamos y devoluciones</p>
+                    </div>
+                    <div class="step" onclick="showStep(4)">
+                        <div class="step-number">4</div>
+                        <h3>Interfaz Usuario</h3>
+                        <p>Menús y navegación</p>
+                    </div>
+                    <div class="step" onclick="showStep(5)">
+                        <div class="step-number">5</div>
+                        <h3>Persistencia</h3>
+                        <p>Archivos y validaciones</p>
+                    </div>
+                    <div class="step" onclick="showStep(6)">
+                        <div class="step-number">6</div>
+                        <h3>Pruebas</h3>
+                        <p>Testing y depuración</p>
+                    </div>
+                </div>
+                
+                <div class="result-display" id="stepContent">
+                    <h3>Paso 1: Diseño de Clases</h3>
+                    <p>Comenzamos definiendo las clases principales de nuestro sistema:</p>
+                    <ul>
+                        <li><strong>Libro:</strong> ISBN, título, autor, año, disponible</li>
+                        <li><strong>Usuario:</strong> ID, nombre, email, libros prestados</li>
+                        <li><strong>Biblioteca:</strong> Gestiona libros y usuarios</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="code-editor">
+                <div class="code-header">
+                    <span>📝 sistema_biblioteca.py</span>
+                    <button class="btn btn-secondary" onclick="executeCode()">Ejecutar Código</button>
+                </div>
+                <div class="code-content" id="codeDisplay">
+    <span class="comment"># Sistema de Gestión de Biblioteca - Proyecto Final Integrador</span>
+    <span class="keyword">import</span> json
+    <span class="keyword">import</span> os
+    <span class="keyword">from</span> datetime <span class="keyword">import</span> datetime, timedelta
+
+    <span class="keyword">class</span> <span class="function">Libro</span>:
+        <span class="keyword">def</span> <span class="function">__init__</span>(self, isbn, titulo, autor, año, categoria=<span class="string">"General"</span>):
+            self.isbn = isbn
+            self.titulo = titulo
+            self.autor = autor
+            self.año = año
+            self.categoria = categoria
+            self.disponible = <span class="keyword">True</span>
+            self.fecha_prestamo = <span class="keyword">None</span>
+            self.usuario_prestamo = <span class="keyword">None</span>
+        
+        <span class="keyword">def</span> <span class="function">to_dict</span>(self):
+            <span class="keyword">return</span> {
+                <span class="string">'isbn'</span>: self.isbn,
+                <span class="string">'titulo'</span>: self.titulo,
+                <span class="string">'autor'</span>: self.autor,
+                <span class="string">'año'</span>: self.año,
+                <span class="string">'categoria'</span>: self.categoria,
+                <span class="string">'disponible'</span>: self.disponible,
+                <span class="string">'fecha_prestamo'</span>: self.fecha_prestamo,
+                <span class="string">'usuario_prestamo'</span>: self.usuario_prestamo
+            }
+
+    <span class="keyword">class</span> <span class="function">Usuario</span>:
+        <span class="keyword">def</span> <span class="function">__init__</span>(self, id_usuario, nombre, email):
+            self.id = id_usuario
+            self.nombre = nombre
+            self.email = email
+            self.libros_prestados = []
+            self.fecha_registro = datetime.now().strftime(<span class="string">"%Y-%m-%d"</span>)
+        
+        <span class="keyword">def</span> <span class="function">to_dict</span>(self):
+            <span class="keyword">return</span> {
+                <span class="string">'id'</span>: self.id,
+                <span class="string">'nombre'</span>: self.nombre,
+                <span class="string">'email'</span>: self.email,
+                <span class="string">'libros_prestados'</span>: self.libros_prestados,
+                <span class="string">'fecha_registro'</span>: self.fecha_registro
+            }
+
+    <span class="keyword">class</span> <span class="function">Biblioteca</span>:
+        <span class="keyword">def</span> <span class="function">__init__</span>(self):
+            self.libros = {}
+            self.usuarios = {}
+            self.cargar_datos()
+        
+        <span class="keyword">def</span> <span class="function">agregar_libro</span>(self, libro):
+            <span class="keyword">if</span> libro.isbn <span class="keyword">not in</span> self.libros:
+                self.libros[libro.isbn] = libro
+                self.guardar_datos()
+                <span class="keyword">return</span> <span class="keyword">True</span>
+            <span class="keyword">return</span> <span class="keyword">False</span>
+        
+        <span class="keyword">def</span> <span class="function">registrar_usuario</span>(self, usuario):
+            <span class="keyword">if</span> usuario.id <span class="keyword">not in</span> self.usuarios:
+                self.usuarios[usuario.id] = usuario
+                self.guardar_datos()
+                <span class="keyword">return</span> <span class="keyword">True</span>
+            <span class="keyword">return</span> <span class="keyword">False</span>
+        
+        <span class="keyword">def</span> <span class="function">prestar_libro</span>(self, isbn, id_usuario):
+            <span class="keyword">if</span> isbn <span class="keyword">in</span> self.libros <span class="keyword">and</span> id_usuario <span class="keyword">in</span> self.usuarios:
+                libro = self.libros[isbn]
+                usuario = self.usuarios[id_usuario]
+                
+                <span class="keyword">if</span> libro.disponible <span class="keyword">and</span> len(usuario.libros_prestados) < <span class="number">3</span>:
+                    libro.disponible = <span class="keyword">False</span>
+                    libro.fecha_prestamo = datetime.now().strftime(<span class="string">"%Y-%m-%d"</span>)
+                    libro.usuario_prestamo = id_usuario
+                    usuario.libros_prestados.append(isbn)
+                    self.guardar_datos()
+                    <span class="keyword">return</span> <span class="keyword">True</span>
+            <span class="keyword">return</span> <span class="keyword">False</span>
+                </div>
+            </div>
+
+            <div class="exercise-container">
+                <h2>🏆 Ejercicios del Proyecto Final</h2>
+                
+                <div class="exercise-tabs">
+                    <div class="tab active" onclick="showTab('practica')">Práctica Guiada</div>
+                    <div class="tab" onclick="showTab('extension')">Extensiones</div>
+                    <div class="tab" onclick="showTab('evaluacion')">Evaluación</div>
+                </div>
+
+                <div id="practica" class="tab-content active">
+                    <h3>🔧 Implementación Práctica</h3>
+                    <p>Completa la implementación del sistema paso a paso:</p>
+                    
+                    <div class="input-group">
+                        <label>1. Agregar un nuevo libro:</label>
+                        <input type="text" id="isbn" placeholder="ISBN (ej: 978-123456789)">
+                        <input type="text" id="titulo" placeholder="Título del libro">
+                        <input type="text" id="autor" placeholder="Autor">
+                        <input type="number" id="año" placeholder="Año de publicación">
+                        <select id="categoria">
+                            <option value="General">General</option>
+                            <option value="Ficción">Ficción</option>
+                            <option value="Ciencia">Ciencia</option>
+                            <option value="Historia">Historia</option>
+                            <option value="Tecnología">Tecnología</option>
+                        </select>
+                        <button class="btn" onclick="agregarLibro()">Agregar Libro</button>
+                    </div>
+
+                    <div class="input-group">
+                        <label>2. Registrar nuevo usuario:</label>
+                        <input type="text" id="idUsuario" placeholder="ID Usuario (ej: U001)">
+                        <input type="text" id="nombreUsuario" placeholder="Nombre completo">
+                        <input type="email" id="emailUsuario" placeholder="Email">
+                        <button class="btn btn-secondary" onclick="registrarUsuario()">Registrar Usuario</button>
+                    </div>
+
+                    <div class="input-group">
+                        <label>3. Realizar préstamo:</label>
+                        <input type="text" id="isbnPrestamo" placeholder="ISBN del libro">
+                        <input type="text" id="usuarioPrestamo" placeholder="ID del usuario">
+                        <button class="btn" onclick="prestarLibro()">Prestar Libro</button>
+                    </div>
+
+                    <div class="success-message" id="successMsg"></div>
+                    <div class="error-message" id="errorMsg"></div>
+                    
+                    <div class="result-display" id="resultadoPractica">
+                        <h4>📊 Estado del Sistema:</h4>
+                        <p>Libros registrados: 0</p>
+                        <p>Usuarios registrados: 0</p>
+                        <p>Libros prestados: 0</p>
+                    </div>
+                </div>
+
+                <div id="extension" class="tab-content">
+                    <h3>🚀 Extensiones del Proyecto</h3>
+                    <p>Una vez completado el proyecto básico, implementa estas funcionalidades adicionales:</p>
+                    
+                    <ul class="feature-list">
+                        <li><strong>Sistema de Reservas:</strong> Permitir reservar libros no disponibles</li>
+                        <li><strong>Multas por Retraso:</strong> Calcular multas por devolución tardía</li>
+                        <li><strong>Categorización Avanzada:</strong> Filtros y búsqueda por múltiples criterios</li>
+                        <li><strong>Reportes Estadísticos:</strong> Libros más prestados, usuarios más activos</li>
+                        <li><strong>Interfaz Gráfica:</strong> Usar tkinter para crear una GUI</li>
+                        <li><strong>Base de Datos:</strong> Migrar de archivos JSON a SQLite</li>
+                        <li><strong>API REST:</strong> Crear endpoints para integración externa</li>
+                        <li><strong>Notificaciones:</strong> Sistema de alertas por email</li>
+                    </ul>
+
+                    <div class="code-editor">
+                        <div class="code-header">
+                            <span>📝 Ejemplo: Sistema de Reservas</span>
+                        </div>
+                        <div class="code-content">
+    <span class="keyword">def</span> <span class="function">reservar_libro</span>(self, isbn, id_usuario):
+        <span class="string">"""Permite reservar un libro no disponible"""</span>
+        <span class="keyword">if</span> isbn <span class="keyword">in</span> self.libros <span class="keyword">and</span> id_usuario <span class="keyword">in</span> self.usuarios:
+            libro = self.libros[isbn]
+            <span class="keyword">if</span> <span class="keyword">not</span> libro.disponible:
+                <span class="keyword">if</span> <span class="keyword">not</span> hasattr(libro, <span class="string">'reservas'</span>):
+                    libro.reservas = []
+                
+                <span class="keyword">if</span> id_usuario <span class="keyword">not in</span> libro.reservas:
+                    libro.reservas.append({
+                        <span class="string">'usuario'</span>: id_usuario,
+                        <span class="string">'fecha'</span>: datetime.now().strftime(<span class="string">"%Y-%m-%d %H:%M"</span>)
+                    })
+                    self.guardar_datos()
+                    <span class="keyword">return</span> <span class="keyword">True</span>
+        <span class="keyword">return</span> <span class="keyword">False</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="evaluacion" class="tab-content">
+                    <h3>📋 Evaluación del Proyecto</h3>
+                    <p>Criterios de evaluación para tu proyecto final:</p>
+                    
+                    <div class="concept-grid">
+                        <div class="concept-card">
+                            <h4>Funcionalidad</h4>
+                            <p>25 puntos</p>
+                            <small>Todas las funciones trabajan correctamente</small>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Código Limpio</h4>
+                            <p>20 puntos</p>
+                            <small>Organización y legibilidad del código</small>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Manejo de Errores</h4>
+                            <p>20 puntos</p>
+                            <small>Validaciones y excepciones apropiadas</small>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Documentación</h4>
+                            <p>15 puntos</p>
+                            <small>Comentarios y documentación clara</small>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Creatividad</h4>
+                            <p>10 puntos</p>
+                            <small>Funcionalidades adicionales innovadoras</small>
+                        </div>
+                        <div class="concept-card">
+                            <h4>Presentación</h4>
+                            <p>10 puntos</p>
+                            <small>Demostración y explicación del proyecto</small>
+                        </div>
+                    </div>
+
+                    <h4>Lista de Verificación:</h4>
+                    <div class="input-group">
+                        <label><input type="checkbox" id="check1"> Clase Libro implementada correctamente</label><br>
+                        <label><input type="checkbox" id="check2"> Clase Usuario implementada correctamente</label><br>
+                        <label><input type="checkbox" id="check3"> Clase Biblioteca implementada correctamente</label><br>
+                        <label><input type="checkbox" id="check4"> Sistema de préstamos funcional</label><br>
+                        <label><input type="checkbox" id="check5"> Sistema de devoluciones funcional</label><br>
+                        <label><input type="checkbox" id="check6"> Validaciones de entrada implementadas</label><br>
+                        <label><input type="checkbox" id="check7"> Manejo de archivos para persistencia</label><br>
+                        <label><input type="checkbox" id="check8"> Interfaz de usuario intuitiva</label><br>
+                        <label><input type="checkbox" id="check9"> Manejo apropiado de excepciones</label><br>
+                        <label><input type="checkbox" id="check10"> Documentación completa del código</label>
+                    </div>
+
+                    <button class="btn" onclick="evaluarProyecto()">Evaluar Mi Proyecto</button>
+                    <div class="result-display" id="resultadoEvaluacion" style="display: none;">
+                        <h4>📊 Resultado de la Evaluación:</h4>
+                        <p id="puntuacionTotal"></p>
+                        <p id="retroalimentacion"></p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section concept-review">
+                <h2><div class="icon">🎓</div>Repaso de Conceptos Integrados</h2>
+                <p>Este proyecto final integra todos los conceptos fundamentales del curso:</p>
+                
+                <div class="concept-grid">
+                    <div class="concept-card">
+                        <h4>📊 Variables y Tipos</h4>
+                        <p>Strings, integers, booleans, lists, dictionaries para almacenar información de libros y usuarios</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔄 Control de Flujo</h4>
+                        <p>If/else, bucles for/while para validaciones, menús y procesamiento de datos</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🔧 Funciones</h4>
+                        <p>Modularización del código en funciones reutilizables y especializadas</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>📝 Estructuras de Datos</h4>
+                        <p>Listas para colecciones, diccionarios para mapeos clave-valor</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>📁 Manejo de Archivos</h4>
+                        <p>Persistencia de datos usando JSON, lectura y escritura de archivos</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🏗️ POO</h4>
+                        <p>Clases, objetos, encapsulación, métodos para modelar entidades del mundo real</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>⚠️ Manejo de Errores</h4>
+                        <p>Try/except, validaciones de entrada, manejo graceful de errores</p>
+                    </div>
+                    <div class="concept-card">
+                        <h4>🧠 Lógica de Programación</h4>
+                        <p>Algoritmos, resolución de problemas, pensamiento computacional</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="exercise-container">
+                <h2>🎯 Retos Adicionales</h2>
+                <div class="step-container">
+                    <div class="step">
+                        <div class="step-number">💡</div>
+                        <h3>Reto Principiante</h3>
+                        <p>Implementa un sistema de búsqueda que permita encontrar libros por título, autor o categoría</p>
+                        <button class="btn" onclick="mostrarSolucion('principiante')">Ver Pista</button>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">🚀</div>
+                        <h3>Reto Intermedio</h3>
+                        <p>Crea un sistema de reportes que muestre estadísticas: libros más prestados, usuarios más activos</p>
+                        <button class="btn" onclick="mostrarSolucion('intermedio')">Ver Pista</button>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">🏆</div>
+                        <h3>Reto Avanzado</h3>
+                        <p>Implementa una interfaz gráfica usando tkinter con ventanas, botones y formularios</p>
+                        <button class="btn" onclick="mostrarSolucion('avanzado')">Ver Pista</button>
+                    </div>
+                </div>
+
+                <div class="result-display" id="solucionReto" style="display: none;">
+                    <h4>💡 Pista para el Reto:</h4>
+                    <div id="contenidoSolucion"></div>
+                </div>
+            </div>
+
+            <div class="section">
+                <h2><div class="icon">🎉</div>¡Felicitaciones!</h2>
+                <p>Has completado el curso de <strong>Fundamentos de Programación</strong>. Este proyecto final demuestra tu dominio de:</p>
+                <ul class="feature-list">
+                    <li>Programación orientada a objetos</li>
+                    <li>Estructuras de datos complejas</li>
+                    <li>Manejo de archivos y persistencia</li>
+                    <li>Validación y manejo de errores</li>
+                    <li>Lógica de programación avanzada</li>
+                    <li>Desarrollo de aplicaciones completas</li>
+                </ul>
+                
+                <div style="text-align: center; margin-top: 30px;">
+                    <button class="btn" onclick="generarCertificado()">🏆 Generar Certificado</button>
+                    <button class="btn btn-secondary" onclick="descargarProyecto()">📥 Descargar Proyecto</button>
+                    <button class="btn" onclick="siguientesPasos()">🚀 Próximos Pasos</button>
+                </div>
+            </div>
+
+            <div class="section" id="certificadoSection" style="display: none; text-align: center; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white;">
+                <h2 style="color: white;">🎓 Certificado de Finalización</h2>
+                <div style="border: 3px solid white; padding: 30px; margin: 20px 0; border-radius: 15px;">
+                    <h3>Certificado de Finalización</h3>
+                    <p style="font-size: 1.2rem; margin: 20px 0;">
+                        Certificamos que <strong id="nombreEstudiante">[Tu Nombre]</strong><br>
+                        ha completado exitosamente el curso de<br>
+                        <strong>Fundamentos de Programación con Python</strong>
+                    </p>
+                    <p>Desarrollando habilidades en:</p>
+                    <p style="font-size: 0.9rem;">
+                        Variables • Control de Flujo • Funciones • Estructuras de Datos<br>
+                        POO • Manejo de Archivos • Manejo de Errores • Proyecto Final
+                    </p>
+                    <p style="margin-top: 30px;">
+                        <small>Fecha: <span id="fechaCertificado"></span></small>
+                    </p>
+                </div>
+                <div class="input-group" style="max-width: 400px; margin: 0 auto;">
+                    <input type="text" id="nombreParaCertificado" placeholder="Ingresa tu nombre completo" style="text-align: center;">
+                    <button class="btn" onclick="actualizarCertificado()">Actualizar Certificado</button>
+                </div>
+            </div>
+        </div>
+        <script src="js/mod8.js"></script>
+    </body>
+</html>
+                
